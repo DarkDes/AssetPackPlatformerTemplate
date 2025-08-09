@@ -1,0 +1,7 @@
+[gd_resource type="Shortcut" load_steps=2 format=3 uid="uid://cgcruitxegn2a"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_5k7rr"]
+keycode = 4194332
+
+[resource]
+events = [SubResource("InputEventKey_5k7rr")]

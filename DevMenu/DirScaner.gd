@@ -57,7 +57,7 @@ func scan_asset_directory():
 	
 	for n in assets:
 		print(n)
-	
+
 func read_json_file(file_path: String) -> Variant:
 	var file = FileAccess.open(file_path, FileAccess.READ)
 	if file == null:

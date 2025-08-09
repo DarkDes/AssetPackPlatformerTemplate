@@ -1,2 +1,10 @@
 {
+	"pixel_art": true,
+	"sprites": {
+		"player": {
+			"animations": {
+				"idle": { "fps": 5 },
+			},
+		},	
+	},
 }

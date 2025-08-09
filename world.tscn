@@ -1,8 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://c762cjbn7lvhc"]
+[gd_scene load_steps=20 format=3 uid="uid://c762cjbn7lvhc"]
 
 [ext_resource type="Script" path="res://DevMenu/DevMenu.gd" id="1_n8tci"]
 [ext_resource type="Theme" uid="uid://camj2h6115iy2" path="res://DevMenu/ui_devmenu_theme.tres" id="2_d2ujk"]
 [ext_resource type="Script" path="res://DevMenu/DirScaner.gd" id="2_fl45q"]
+[ext_resource type="Shortcut" uid="uid://cgcruitxegn2a" path="res://DevMenu/shortcut_open_devtool.tres" id="4_3sunq"]
+[ext_resource type="SpriteFrames" uid="uid://dtq7yttb4sh8v" path="res://Sprites/s_player.tres" id="5_1gvc2"]
+[ext_resource type="Script" path="res://AnimSprite2DAsset.gd" id="6_fu8am"]
+[ext_resource type="SpriteFrames" uid="uid://bajkklc3swfud" path="res://Sprites/s_coin.tres" id="7_jijk1"]
+[ext_resource type="SpriteFrames" uid="uid://c2qfrreuusi8w" path="res://Sprites/s_enemy.tres" id="8_1uygw"]
+[ext_resource type="SpriteFrames" uid="uid://bvmmy11jhxye5" path="res://Sprites/s_danger.tres" id="9_ej2pt"]
+[ext_resource type="SpriteFrames" uid="uid://d0sx1kw0eethl" path="res://Sprites/s_platform_static.tres" id="10_s4gdo"]
+[ext_resource type="SpriteFrames" uid="uid://bx4qjh144bdw2" path="res://Sprites/s_platform_move.tres" id="11_mj3n5"]
+[ext_resource type="SpriteFrames" uid="uid://b1ieprdw6omlf" path="res://Sprites/s_flag.tres" id="12_663yc"]
+[ext_resource type="SpriteFrames" uid="uid://b7on802l8lji3" path="res://Sprites/s_bg.tres" id="13_qljbc"]
+[ext_resource type="SpriteFrames" uid="uid://4xbo2t8q82td" path="res://Sprites/s_bg_px.tres" id="14_sas53"]
+[ext_resource type="SpriteFrames" uid="uid://c53cp8bomcry4" path="res://Sprites/s_decoration_small.tres" id="15_5elp5"]
+[ext_resource type="SpriteFrames" uid="uid://dfkqady4xdfq8" path="res://Sprites/s_decoration_mid.tres" id="16_5voug"]
+[ext_resource type="SpriteFrames" uid="uid://csfpgr4mplpyo" path="res://Sprites/s_decoration_big.tres" id="17_yx0yb"]
+[ext_resource type="SpriteFrames" uid="uid://tdk7eg7ju4tj" path="res://Sprites/s_ui_live.tres" id="18_542jj"]
+[ext_resource type="SpriteFrames" uid="uid://cqdv0ndqlw243" path="res://Sprites/s_ui_coin.tres" id="19_gv5uv"]
 
 [node name="World" type="Node2D"]
 
@@ -28,6 +44,7 @@ offset_top = 8.0
 offset_right = 56.0
 offset_bottom = 24.0
 theme = ExtResource("2_d2ujk")
+shortcut = ExtResource("4_3sunq")
 text = "DevTool"
 
 [node name="DevToolPanel" type="Panel" parent="Interface/DevMenu"]
@@ -42,6 +59,7 @@ layout_mode = 0
 offset_right = 64.0
 offset_bottom = 16.0
 theme = ExtResource("2_d2ujk")
+shortcut = ExtResource("4_3sunq")
 text = "X"
 
 [node name="AssetPackCon" type="HBoxContainer" parent="Interface/DevMenu/DevToolPanel"]
@@ -63,6 +81,104 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme = ExtResource("2_d2ujk")
+
+[node name="Player" type="AnimatedSprite2D" parent="."]
+position = Vector2(96, 96)
+sprite_frames = ExtResource("5_1gvc2")
+animation = &"move"
+script = ExtResource("6_fu8am")
+sprite_name = "player"
+
+[node name="Coin" type="AnimatedSprite2D" parent="."]
+position = Vector2(136, 96)
+sprite_frames = ExtResource("7_jijk1")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "coin"
+
+[node name="Enemy" type="AnimatedSprite2D" parent="."]
+position = Vector2(176, 96)
+sprite_frames = ExtResource("8_1uygw")
+animation = &"move"
+script = ExtResource("6_fu8am")
+sprite_name = "enemy"
+
+[node name="Danger" type="AnimatedSprite2D" parent="."]
+position = Vector2(216, 96)
+sprite_frames = ExtResource("9_ej2pt")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "danger"
+
+[node name="platform_static" type="AnimatedSprite2D" parent="."]
+position = Vector2(256, 96)
+sprite_frames = ExtResource("10_s4gdo")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "platform_static"
+
+[node name="platform_move" type="AnimatedSprite2D" parent="."]
+position = Vector2(96, 144)
+sprite_frames = ExtResource("11_mj3n5")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "platform_move"
+
+[node name="flag" type="AnimatedSprite2D" parent="."]
+position = Vector2(136, 144)
+sprite_frames = ExtResource("12_663yc")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "flag"
+
+[node name="background" type="AnimatedSprite2D" parent="."]
+position = Vector2(176, 144)
+sprite_frames = ExtResource("13_qljbc")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "background"
+
+[node name="background_parallax" type="AnimatedSprite2D" parent="."]
+position = Vector2(216, 144)
+sprite_frames = ExtResource("14_sas53")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "background_parallax"
+
+[node name="decoration_small" type="AnimatedSprite2D" parent="."]
+position = Vector2(256, 144)
+sprite_frames = ExtResource("15_5elp5")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "decoration_small"
+
+[node name="decortaion_mid" type="AnimatedSprite2D" parent="."]
+position = Vector2(96, 184)
+sprite_frames = ExtResource("16_5voug")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "decortaion_mid"
+
+[node name="decoration_big" type="AnimatedSprite2D" parent="."]
+position = Vector2(136, 184)
+sprite_frames = ExtResource("17_yx0yb")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "decoration_big"
+
+[node name="ui_live" type="AnimatedSprite2D" parent="."]
+position = Vector2(176, 184)
+sprite_frames = ExtResource("18_542jj")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "ui_live"
+
+[node name="ui_coin" type="AnimatedSprite2D" parent="."]
+position = Vector2(216, 184)
+sprite_frames = ExtResource("19_gv5uv")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "ui_coin"
 
 [connection signal="pressed" from="Interface/DevMenu/DevTool" to="Interface/DevMenu" method="_on_dev_tool_pressed"]
 [connection signal="pressed" from="Interface/DevMenu/DevToolPanel/DevToolClose" to="Interface/DevMenu" method="_on_dev_tool_close_pressed"]
