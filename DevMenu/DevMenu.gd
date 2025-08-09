@@ -53,25 +53,32 @@ func apply_assetpack(assetpack_data):
 	var sprites_dict = sprites as Dictionary
 	for sprite_key in sprites_dict:
 		apply_sprite_from_assetpack(sprite_key, sprites_dict[sprite_key], assetpack_data)
-		print(sprite_key + " >> " + str(sprites_dict[sprite_key]))
+		# print(sprite_key + " >> " + str(sprites_dict[sprite_key]))
 	
 func apply_sprite_from_assetpack(sprite_name, sprite_data, assetpack_data):
 	var animated_sprite_2d = APM.get_sprite(sprite_name) # $"../../Player"
 	if animated_sprite_2d == null:
 		print("apply_sprite_from_assetpack: Cant find sprite with name " + sprite_name )
-		
+		return
+	
 	# animated_sprite_2d.texture_filter = TEXTURE_FILTER_NEAREST
 	var sframes : SpriteFrames = animated_sprite_2d.sprite_frames
 	var anims = sframes.get_animation_names()
+	print(anims)
 	for anim in anims:
-		
 		var sprite_path = sprite_name + "_"
 		if "animations" in sprite_data: 
 			sprite_path += anim + "_"
 		sprite_path = assetpack_data.path.path_join(sprite_path)
 		
+		print("Apply Asset: Looking for " + sprite_name + " in " + sprite_path + "...")
+		
 		var frames_count = 0
 		while(FileAccess.file_exists(sprite_path + str(frames_count) + ".png")): frames_count += 1
+		if frames_count == 0:
+			push_error("Apply Asset: Sprites not found!")
+		else:
+			print("Apply Asset: Found " + str(frames_count) + " of " + sprite_path)
 		
 		#sframes.set_animation_speed(anim, assetpack_data.)
 		sframes.clear(anim);
@@ -79,6 +86,7 @@ func apply_sprite_from_assetpack(sprite_name, sprite_data, assetpack_data):
 			var _path = sprite_path + str(i) + ".png"
 			var _image = Image.load_from_file(_path)
 			var _texture = ImageTexture.create_from_image(_image)
+			push_warning(_path, _image, _texture)
 			sframes.add_frame(anim, _texture)
 		
 		# print(anim + " >> " + str(frames_count))

@@ -1,7 +1,7 @@
 extends Node
 
-#const ASSET_DIR : String = "res://Assets"
-var ASSET_DIR : String = OS.get_executable_path().get_base_dir().path_join("Assets")
+var ASSET_DIR : String = "res://Assets"
+#var ASSET_DIR : String = OS.get_executable_path().get_base_dir().path_join("Assets")
 const SETTINGS_FILE : String = "settings.json"
 
 var authors_dirs = []
@@ -10,7 +10,7 @@ var assets = []
 func _ready():
 	if FileAccess.file_exists(ASSET_DIR) == false:
 		ASSET_DIR = "res://Assets"
-
+	
 func scan_asset_directory():
 	var dir_access = DirAccess.open(ASSET_DIR) #OS.get_executable_path().get_base_dir().path_join("Assets"))
 	if dir_access == null:
