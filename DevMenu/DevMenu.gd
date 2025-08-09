@@ -3,6 +3,7 @@ extends Control
 @onready var dev_tool_button := $DevTool
 @onready var dev_tool_panel = $DevToolPanel
 @onready var asset_pack_selector = $DevToolPanel/AssetPackCon/AssetPackSelector
+@onready var settings_panel = $DevToolPanel/SettingsPanel
 
 
 @onready var dir_scaner = $DirScaner
@@ -12,11 +13,13 @@ extends Control
 func _ready():
 	dev_tool_panel.visible = false;
 	dev_tool_button.visible = true;
+	settings_panel.visible = false;
 	
 	dir_scaner.scan_asset_directory();
 	var index = 0;
-	for n in dir_scaner.assets:
-		asset_pack_selector.add_item(n.name, index)
+	for n in APM.assets_data:
+		n.index = index
+		asset_pack_selector.add_item(n.display_name, index)
 		asset_pack_selector.set_item_metadata(index, n)
 		index += 1
 
@@ -30,27 +33,11 @@ func _on_dev_tool_close_pressed():
 
 func _on_asset_pack_selector_item_selected(index):
 	var asset_data = asset_pack_selector.get_item_metadata(index)
+	APM.current = asset_data;
 	apply_assetpack(asset_data)
 
 func apply_assetpack(assetpack_data):
-	var sprites = {
-		"player": { "animations": [ "idle", "move", "jump", "fall", "action", ] },
-		"coin": {},
-		"enemy": { "animations": [ "move", "dying" ] },
-		"danger": {},
-		#"tileset": {},
-		"platform_static": {},
-		"platform_move": {},
-		"flag": {},
-		"background": {},
-		"background_parallax": {},
-		"decoration_small": {},
-		"decortaion_mid": {},
-		"decoration_big": {},
-		"ui_live": {},
-		"ui_coin": {},
-	}
-	var sprites_dict = sprites as Dictionary
+	var sprites_dict = APM.sprite_def as Dictionary
 	for sprite_key in sprites_dict:
 		apply_sprite_from_assetpack(sprite_key, sprites_dict[sprite_key], assetpack_data)
 		# print(sprite_key + " >> " + str(sprites_dict[sprite_key]))

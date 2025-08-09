@@ -5,3 +5,8 @@ extends Resource
 @export var author_name : String = "No one";
 @export var path : String = "";
 @export var settings_data = {}; 
+
+var index = -1 # Для списка
+
+func get_assetpack_name() -> String:
+	return author_name + " - " + display_name
