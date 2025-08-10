@@ -30,7 +30,9 @@ func scan_asset_directory():
 				data.author_name	= author
 				data.display_name	= file_name
 				data.settings_data  = read_json_file(settings_path);
-			
+				
+				# Гарантировать наличие настроек
+				if data.settings_data == null: data.settings_data = {}
 			
 				# Find Display Name
 				if data.settings_data != null:

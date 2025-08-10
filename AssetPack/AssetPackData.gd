@@ -20,3 +20,6 @@ func get_setting(setting_name, default_value, create_if_no_exists=true):
 	if setting_name in settings_data:
 		return settings_data[setting_name];
 	return default_value
+	
+func set_setting(setting_name, value):
+	settings_data[setting_name] = value

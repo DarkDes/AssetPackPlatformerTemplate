@@ -1,18 +1,9 @@
 {
+	"default_fps": 5,
 	"pixel_art": false,
-	"sprites": {
-		"player": {
-			"idle": {
-				"fps": 10
-			},
-			"jump": {
-				"fps": 5
-			},
-			"move": {
-				"fps": 8
-			}
-		}
-	},
+	"sprites_player_idle_fps": 0,
+	"sprites_player_jump_fps": 5,
+	"sprites_player_move_fps": 5,
 	"ui_coins_method": "NUMBERS",
 	"ui_lives_method": "NUMBERS"
 }
