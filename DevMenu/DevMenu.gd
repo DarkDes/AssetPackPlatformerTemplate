@@ -8,7 +8,7 @@ extends Control
 
 @onready var dir_scaner = $DirScaner
 
-
+const PLAYER_IDLE_0 = preload("res://Sprites/player_idle_0.png")
 
 func _ready():
 	dev_tool_panel.visible = false;
@@ -72,20 +72,32 @@ func apply_sprite_from_assetpack(sprite_name, sprite_data, assetpack_data):
 		while(FileAccess.file_exists(sprite_path + str(frames_count) + ".png")): frames_count += 1
 		if frames_count == 0:
 			push_error("Apply Asset: Sprites not found!")
+			# Need set default
+			sframes.clear(anim);
+			for i in 5:
+				sframes.add_frame(anim,PLAYER_IDLE_0)
+			return
 		else:
 			print("Apply Asset: Found " + str(frames_count) + " of " + sprite_path)
 		
 		#sframes.set_animation_speed(anim, assetpack_data.)
+		var max_size = Vector2(1,1)
 		sframes.clear(anim);
 		for i in frames_count:
 			var _path = sprite_path + str(i) + ".png"
 			var _image = Image.load_from_file(_path)
 			var _texture = ImageTexture.create_from_image(_image)
+			
+			max_size.x = max(max_size.x, _image.get_size().x)
+			max_size.y = max(max_size.y, _image.get_size().y)
+			
 			push_warning(_path, _image, _texture)
 			sframes.add_frame(anim, _texture)
 		
+		animated_sprite_2d.scale = Vector2(32,32)/max_size
+		
 		# print(anim + " >> " + str(frames_count))
-	animated_sprite_2d.play("idle")
+	# animated_sprite_2d.play("idle")
 		#for i in sframes.get_frame_count(anim):
 			# var _path = assetpack_data.path + str(i+1) +".png"# "#OS.get_executable_path().get_base_dir().path_join("robot/s_robot_char_idle" + str(i) +".png")
 			# var _image = Image.load_from_file(_path)

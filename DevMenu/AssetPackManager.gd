@@ -25,7 +25,11 @@ var current : AssetPackData = null
 var sprites : Dictionary = {}
 
 func add_sprite(sprite_name, sprite_node):
-	sprites[sprite_name] = sprite_node;
+	if sprite_name in sprites:
+		# Already here, send changes based on data
+		sprites[sprite_name] = sprite_node;
+	else:
+		sprites[sprite_name] = sprite_node;
 	print( "APM > Sprite set " + sprite_name );
 	
 func get_sprite(sprite_name):

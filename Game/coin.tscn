@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://l1iatj037t3y"]
+
+[ext_resource type="SpriteFrames" uid="uid://bajkklc3swfud" path="res://Sprites/s_coin.tres" id="1_3fe4m"]
+[ext_resource type="Script" path="res://Game/Scripts/Coin.gd" id="1_h420y"]
+[ext_resource type="Script" path="res://AnimSprite2DAsset.gd" id="2_slvk0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqkan"]
+size = Vector2(10, 10)
+
+[node name="Coin" type="Area2D" groups=["coin"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_h420y")
+
+[node name="CoinSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_3fe4m")
+animation = &"idle"
+frame_progress = 0.00886752
+script = ExtResource("2_slvk0")
+sprite_name = "coin"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_eqkan")
