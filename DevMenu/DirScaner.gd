@@ -29,7 +29,9 @@ func scan_asset_directory():
 				data.path 			= author_path.path_join(file_name)
 				data.author_name	= author
 				data.display_name	= file_name
-				
+				data.settings_data  = read_json_file(settings_path);
+			
+			
 				# Find Display Name
 				if data.settings_data != null:
 					if "author" in data.settings_data:

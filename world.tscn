@@ -364,31 +364,43 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="AnimData" type="PanelContainer" parent="Interface/DevMenu/DevToolPanel/SettingsPanel"]
+[node name="AnimData" type="Panel" parent="Interface/DevMenu/DevToolPanel/SettingsPanel"]
 layout_mode = 0
 offset_left = 288.0
 offset_top = 176.0
 offset_right = 488.0
 offset_bottom = 408.0
 theme = ExtResource("2_d2ujk")
+
+[node name="FPS" type="HBoxContainer" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/AnimData"]
+layout_mode = 2
+offset_top = 8.0
+offset_right = 200.0
+offset_bottom = 24.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 metadata/_edit_group_ = true
 
-[node name="Grid" type="GridContainer" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/AnimData"]
-layout_mode = 2
-theme = ExtResource("2_d2ujk")
-
-[node name="Label2" type="Label" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/AnimData/Grid"]
+[node name="Label2" type="Label" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/AnimData/FPS"]
 layout_mode = 2
 theme = ExtResource("2_d2ujk")
 text = "Frames per Second"
 vertical_alignment = 1
 
-[node name="FPSSpin" type="SpinBox" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/AnimData/Grid"]
+[node name="FPSSpin" type="SpinBox" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/AnimData/FPS"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("2_d2ujk")
 value = 5.0
 allow_greater = true
 alignment = 1
+
+[node name="Grid" type="GridContainer" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/AnimData"]
+layout_mode = 2
+offset_top = 48.0
+offset_right = 200.0
+offset_bottom = 232.0
+theme = ExtResource("2_d2ujk")
 
 [node name="Save" type="Button" parent="Interface/DevMenu/DevToolPanel/SettingsPanel"]
 layout_mode = 1
@@ -434,7 +446,6 @@ theme_override_constants/margin_bottom = 10
 initial_position = 3
 size = Vector2i(325, 100)
 current_screen = 0
-visible = true
 
 [connection signal="pressed" from="Interface/DevMenu/DevTool" to="Interface/DevMenu" method="_on_dev_tool_pressed"]
 [connection signal="pressed" from="Interface/DevMenu/DevToolPanel/DevToolClose" to="Interface/DevMenu" method="_on_dev_tool_close_pressed"]
@@ -442,5 +453,5 @@ visible = true
 [connection signal="pressed" from="Interface/DevMenu/DevToolPanel/EditAssetPack" to="Interface/DevMenu/DevToolPanel/SettingsPanel" method="_on_edit_asset_pack_pressed"]
 [connection signal="item_selected" from="Interface/DevMenu/DevToolPanel/SettingsPanel/Sprites/SpritesList" to="Interface/DevMenu/DevToolPanel/SettingsPanel" method="_on_sprites_lits_item_selected"]
 [connection signal="item_selected" from="Interface/DevMenu/DevToolPanel/SettingsPanel/Anims/AnimationsList" to="Interface/DevMenu/DevToolPanel/SettingsPanel" method="_on_animations_list_item_selected"]
-[connection signal="value_changed" from="Interface/DevMenu/DevToolPanel/SettingsPanel/AnimData/Grid/FPSSpin" to="Interface/DevMenu/DevToolPanel/SettingsPanel" method="_on_fps_spin_value_changed"]
+[connection signal="value_changed" from="Interface/DevMenu/DevToolPanel/SettingsPanel/AnimData/FPS/FPSSpin" to="Interface/DevMenu/DevToolPanel/SettingsPanel" method="_on_fps_spin_value_changed"]
 [connection signal="pressed" from="Interface/DevMenu/DevToolPanel/SettingsPanel/Save" to="Interface/DevMenu/DevToolPanel/SettingsPanel" method="_on_save_pressed"]
