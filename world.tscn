@@ -131,6 +131,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_d2ujk")
 
 [node name="DevMenu" type="Control" parent="Interface"]
 anchors_preset = 0
@@ -211,11 +212,12 @@ text = "Add New"
 layout_mode = 0
 offset_top = 88.0
 offset_right = 504.0
-offset_bottom = 456.0
+offset_bottom = 520.0
 theme = ExtResource("2_d2ujk")
 script = ExtResource("20_bkcxn")
 
 [node name="AssetName" type="Label" parent="Interface/DevMenu/DevToolPanel/SettingsPanel"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 496.0
@@ -224,6 +226,67 @@ theme = ExtResource("2_d2ujk")
 text = "Asset name--------"
 label_settings = SubResource("LabelSettings_hqr5r")
 vertical_alignment = 1
+
+[node name="Main" type="Panel" parent="Interface/DevMenu/DevToolPanel/SettingsPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 80.0
+offset_right = 496.0
+offset_bottom = 168.0
+theme = ExtResource("2_d2ujk")
+
+[node name="PixelArt" type="CheckBox" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/Main"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 32.0
+theme = ExtResource("2_d2ujk")
+text = "Pixel Art"
+
+[node name="UILives" type="HBoxContainer" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/Main"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 312.0
+offset_bottom = 52.0
+
+[node name="Label" type="Label" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/Main/UILives"]
+layout_mode = 2
+text = "UI Lives Display"
+
+[node name="Selector" type="OptionButton" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/Main/UILives"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_d2ujk")
+item_count = 2
+selected = 0
+popup/item_0/text = "NUMBERS"
+popup/item_0/id = 0
+popup/item_1/text = "COUNT"
+popup/item_1/id = 1
+
+[node name="UICoins" type="HBoxContainer" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/Main"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 56.0
+offset_right = 312.0
+offset_bottom = 76.0
+
+[node name="Label" type="Label" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/Main/UICoins"]
+layout_mode = 2
+text = "UI Coins Display"
+
+[node name="Selector" type="OptionButton" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/Main/UICoins"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_d2ujk")
+item_count = 2
+selected = 0
+popup/item_0/text = "NUMBERS"
+popup/item_0/id = 0
+popup/item_1/text = "COUNT"
+popup/item_1/id = 1
 
 [node name="Grid" type="GridContainer" parent="Interface/DevMenu/DevToolPanel/SettingsPanel"]
 layout_mode = 2
@@ -262,9 +325,10 @@ placeholder_text = "Your nickname"
 [node name="Sprites" type="VBoxContainer" parent="Interface/DevMenu/DevToolPanel/SettingsPanel"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 80.0
+offset_top = 176.0
 offset_right = 184.0
-offset_bottom = 344.0
+offset_bottom = 400.0
+theme = ExtResource("2_d2ujk")
 metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/Sprites"]
@@ -284,9 +348,10 @@ item_2/text = "3"
 [node name="Anims" type="VBoxContainer" parent="Interface/DevMenu/DevToolPanel/SettingsPanel"]
 layout_mode = 0
 offset_left = 192.0
-offset_top = 80.0
+offset_top = 176.0
 offset_right = 272.0
-offset_bottom = 344.0
+offset_bottom = 296.0
+theme = ExtResource("2_d2ujk")
 metadata/_edit_group_ = true
 
 [node name="Label2" type="Label" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/Anims"]
@@ -298,23 +363,29 @@ vertical_alignment = 1
 [node name="AnimationsList" type="ItemList" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/Anims"]
 layout_mode = 2
 size_flags_vertical = 3
-item_count = 3
-item_0/text = "1"
-item_1/text = "2"
-item_2/text = "3"
 
-[node name="PanelContainer" type="PanelContainer" parent="Interface/DevMenu/DevToolPanel/SettingsPanel"]
+[node name="AnimData" type="PanelContainer" parent="Interface/DevMenu/DevToolPanel/SettingsPanel"]
 layout_mode = 0
 offset_left = 288.0
-offset_top = 112.0
+offset_top = 176.0
 offset_right = 488.0
-offset_bottom = 344.0
+offset_bottom = 408.0
+theme = ExtResource("2_d2ujk")
+metadata/_edit_group_ = true
 
-[node name="GridContainer" type="GridContainer" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/PanelContainer"]
+[node name="Grid" type="GridContainer" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/AnimData"]
 layout_mode = 2
+theme = ExtResource("2_d2ujk")
 
-[node name="FPSSpin" type="SpinBox" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/PanelContainer/GridContainer"]
+[node name="Label2" type="Label" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/AnimData/Grid"]
 layout_mode = 2
+theme = ExtResource("2_d2ujk")
+text = "Frames per Second"
+vertical_alignment = 1
+
+[node name="FPSSpin" type="SpinBox" parent="Interface/DevMenu/DevToolPanel/SettingsPanel/AnimData/Grid"]
+layout_mode = 2
+theme = ExtResource("2_d2ujk")
 value = 5.0
 allow_greater = true
 alignment = 1
@@ -370,5 +441,6 @@ visible = true
 [connection signal="item_selected" from="Interface/DevMenu/DevToolPanel/AssetPackCon/AssetPackSelector" to="Interface/DevMenu" method="_on_asset_pack_selector_item_selected"]
 [connection signal="pressed" from="Interface/DevMenu/DevToolPanel/EditAssetPack" to="Interface/DevMenu/DevToolPanel/SettingsPanel" method="_on_edit_asset_pack_pressed"]
 [connection signal="item_selected" from="Interface/DevMenu/DevToolPanel/SettingsPanel/Sprites/SpritesList" to="Interface/DevMenu/DevToolPanel/SettingsPanel" method="_on_sprites_lits_item_selected"]
-[connection signal="item_selected" from="Interface/DevMenu/DevToolPanel/SettingsPanel/Anims/AnimationsList" to="Interface/DevMenu/DevToolPanel/SettingsPanel" method="_on_sprites_lits_item_selected"]
+[connection signal="item_selected" from="Interface/DevMenu/DevToolPanel/SettingsPanel/Anims/AnimationsList" to="Interface/DevMenu/DevToolPanel/SettingsPanel" method="_on_animations_list_item_selected"]
+[connection signal="value_changed" from="Interface/DevMenu/DevToolPanel/SettingsPanel/AnimData/Grid/FPSSpin" to="Interface/DevMenu/DevToolPanel/SettingsPanel" method="_on_fps_spin_value_changed"]
 [connection signal="pressed" from="Interface/DevMenu/DevToolPanel/SettingsPanel/Save" to="Interface/DevMenu/DevToolPanel/SettingsPanel" method="_on_save_pressed"]

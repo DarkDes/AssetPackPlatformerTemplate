@@ -1,4 +1,26 @@
 {
-	"author": "DarkDes",
-	"name": "HD Digital Template"
+	"pixel_art": false,
+	"sprites": {
+		"<null>": {
+			"<null>": {
+				"FPS": 10
+			}
+		},
+		"player": {
+			"action": {
+				"FPS": 15
+			},
+			"idle": {
+				"FPS": 10
+			},
+			"jump": {
+				"FPS": 12
+			},
+			"move": {
+				"FPS": 15
+			}
+		}
+	},
+	"ui_coins_method": "NUMBERS",
+	"ui_lives_method": "NUMBERS"
 }

@@ -22,7 +22,15 @@ func _ready():
 		asset_pack_selector.add_item(n.display_name, index)
 		asset_pack_selector.set_item_metadata(index, n)
 		index += 1
-
+	
+	# Выбрать самый первый ассет пак
+	if index > 0:
+		var asset_data = asset_pack_selector.get_item_metadata(0)
+		APM.current = asset_data;
+		apply_assetpack(asset_data)
+	else:
+		push_error("DEV MENU: NO ASSETS")
+		
 func _on_dev_tool_pressed():
 	dev_tool_panel.visible = true;
 	dev_tool_button.visible = false;
