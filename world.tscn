@@ -31,13 +31,106 @@ font_color = Color(0.466181, 0.466181, 0.466181, 1)
 
 [node name="World" type="Node2D"]
 
-[node name="Tilemap" type="TileMap" parent="."]
-position = Vector2(424, 168)
-scale = Vector2(1.093, 1)
-tile_set = ExtResource("21_dm01q")
-format = 2
-layer_0/tile_data = PackedInt32Array(524299, 3, 1, 524300, 65539, 1, 524301, 65539, 1, 524302, 65539, 1, 524303, 65539, 1, 458768, 3, 1, 524304, 262147, 2, 458769, 65539, 1, 458770, 65539, 1, 458771, 65539, 1, 589835, 3, 2, 655371, 3, 2, 720907, 3, 2, 589836, 65539, 2, 589837, 65539, 2, 589838, 65539, 2, 589839, 65539, 2, 589840, 65539, 2, 655376, 65539, 2, 720912, 65539, 2, 720911, 65539, 2, 720910, 65539, 2, 655374, 65539, 2, 655373, 65539, 2, 655372, 65539, 2, 720908, 65539, 2, 720909, 65539, 2, 655375, 65539, 2, 524305, 65539, 2, 524306, 65539, 2, 524307, 65539, 2, 589841, 65539, 2, 655377, 65539, 2, 720913, 65539, 2, 589842, 65539, 2, 655378, 65539, 2, 720914, 65539, 2, 589843, 65539, 2, 655379, 65539, 2, 720915, 65539, 2, -65533, 65539, 2, 3, 65539, 2, 65539, 65539, 2, 131075, 65539, 2, 196611, 65539, 2, 262147, 65539, 2, 327683, 65539, 2, 393219, 65539, 2, 458755, 65539, 2, 524291, 65539, 2, 589827, 65539, 2, 655363, 65539, 2, 720899, 65539, 2, 786435, 65539, 2, 786436, 65539, 2, 786437, 65539, 2, 786438, 65539, 2, 786439, 65539, 2, 786440, 65539, 2, 786441, 65539, 2, 786442, 65539, 2, 589834, 65539, 2, 655370, 65539, 2, 720906, 65539, 2, 589833, 65539, 2, 655369, 65539, 2, 720905, 65539, 2, 655368, 65539, 2, 720904, 65539, 2, 720903, 65539, 2, 786451, 65539, 2, 786452, 65539, 2, 786453, 65539, 2, 786454, 65539, 2, 786455, 65539, 2, 786456, 65539, 2, 786457, 65539, 2, 720921, 65539, 2, 655385, 65539, 2, 655386, 65539, 2, 589850, 65539, 2, 524308, 65539, 2, 589845, 65539, 2, 655382, 65539, 2, 720919, 65539, 2, 524314, 65539, 2, 458778, 65539, 2, 393241, 65539, 2, 327705, 65539, 2, 720920, 65539, 2, 262169, 65539, 2, 196633, 65539, 2, 196632, 65539, 2, 196631, 65539, 2, 131095, 65539, 2, 65558, 65539, 2, 22, 65539, 2, 21, 65539, 2, 20, 65539, 2, -65516, 65539, 2, -65517, 65539, 2, -65518, 65539, 2, -65519, 65539, 2, -65520, 65539, 2, -65521, 65539, 2, -131057, 65539, 2, -131058, 65539, 2, -131059, 65539, 2, -131060, 65539, 2, -131061, 65539, 2, -131062, 65539, 2, -131063, 65539, 2, -131064, 65539, 2, -131065, 65539, 2, -131066, 65539, 2, -131067, 65539, 2, -131068, 65539, 2, -131069, 65539, 2)
-script = ExtResource("22_gv5jk")
+[node name="SPRITES" type="Node2D" parent="."]
+position = Vector2(480, 200)
+
+[node name="background" type="AnimatedSprite2D" parent="SPRITES"]
+sprite_frames = ExtResource("13_qljbc")
+animation = &"idle"
+centered = false
+script = ExtResource("6_fu8am")
+sprite_name = "background"
+
+[node name="Player" type="AnimatedSprite2D" parent="SPRITES"]
+position = Vector2(32, 72)
+sprite_frames = ExtResource("5_1gvc2")
+animation = &"move"
+script = ExtResource("6_fu8am")
+sprite_name = "player"
+
+[node name="Coin" type="AnimatedSprite2D" parent="SPRITES"]
+position = Vector2(72, 144)
+sprite_frames = ExtResource("7_jijk1")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "coin"
+
+[node name="Enemy" type="AnimatedSprite2D" parent="SPRITES"]
+position = Vector2(176, 120)
+sprite_frames = ExtResource("8_1uygw")
+animation = &"move"
+script = ExtResource("6_fu8am")
+sprite_name = "enemy"
+
+[node name="Danger" type="AnimatedSprite2D" parent="SPRITES"]
+position = Vector2(216, 128)
+sprite_frames = ExtResource("9_ej2pt")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "danger"
+
+[node name="platform_static" type="AnimatedSprite2D" parent="SPRITES"]
+position = Vector2(72, 96)
+sprite_frames = ExtResource("10_s4gdo")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "platform_static"
+
+[node name="platform_move" type="AnimatedSprite2D" parent="SPRITES"]
+position = Vector2(256, 32)
+sprite_frames = ExtResource("11_mj3n5")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "platform_move"
+
+[node name="flag" type="AnimatedSprite2D" parent="SPRITES"]
+position = Vector2(304, 120)
+sprite_frames = ExtResource("12_663yc")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "flag"
+
+[node name="background_parallax" type="AnimatedSprite2D" parent="SPRITES"]
+position = Vector2(488, 88)
+sprite_frames = ExtResource("14_sas53")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "background_parallax"
+
+[node name="decoration_small" type="AnimatedSprite2D" parent="SPRITES"]
+position = Vector2(16, 144)
+sprite_frames = ExtResource("15_5elp5")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "decoration_small"
+
+[node name="decortaion_mid" type="AnimatedSprite2D" parent="SPRITES"]
+position = Vector2(96, 136)
+sprite_frames = ExtResource("16_5voug")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "decoration_mid"
+
+[node name="decoration_big" type="AnimatedSprite2D" parent="SPRITES"]
+position = Vector2(264, 112)
+sprite_frames = ExtResource("17_yx0yb")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "decoration_big"
+
+[node name="ui_live" type="AnimatedSprite2D" parent="SPRITES"]
+position = Vector2(24, 16)
+sprite_frames = ExtResource("18_542jj")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "ui_live"
+
+[node name="ui_coin" type="AnimatedSprite2D" parent="SPRITES"]
+position = Vector2(48, 16)
+sprite_frames = ExtResource("19_gv5uv")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "ui_coin"
 
 [node name="Player" parent="." instance=ExtResource("3_jxqyn")]
 position = Vector2(632, 288)
@@ -53,112 +146,18 @@ position = Vector2(736, 264)
 [node name="Coin4" parent="." instance=ExtResource("4_1ushc")]
 position = Vector2(760, 264)
 
-[node name="SPRITES" type="Node2D" parent="."]
+[node name="Tilemap" type="TileMap" parent="."]
+scale = Vector2(1.093, 1)
+tile_set = ExtResource("21_dm01q")
+format = 2
+layer_0/tile_data = PackedInt32Array(524299, 3, 1, 524300, 65539, 1, 524301, 65539, 1, 524302, 65539, 1, 524303, 65539, 1, 458768, 3, 1, 524304, 262147, 2, 458769, 65539, 1, 458770, 65539, 1, 458771, 65539, 1, 589835, 3, 2, 655371, 3, 2, 720907, 3, 2, 589836, 65539, 2, 589837, 65539, 2, 589838, 65539, 2, 589839, 65539, 2, 589840, 65539, 2, 655376, 65539, 2, 720911, 65539, 2, 720910, 65539, 2, 655374, 65539, 2, 655373, 65539, 2, 655372, 65539, 2, 720908, 65539, 2, 720909, 65539, 2, 655375, 65539, 2, 524305, 65539, 2, -65533, 65539, 2, 3, 65539, 2, 65539, 65539, 2, 131075, 65539, 2, 196611, 65539, 2, 262147, 65539, 2, 327683, 65539, 2, 393219, 65539, 2, 458755, 65539, 2, 524291, 65539, 2, 589827, 65539, 2, 655363, 65539, 2, 720899, 65539, 2, 786435, 65539, 2, 786436, 65539, 2, 786437, 65539, 2, 786438, 65539, 2, 786439, 65539, 2, 786440, 65539, 2, 786441, 65539, 2, 786442, 65539, 2, 589834, 65539, 2, 655370, 65539, 2, 720906, 65539, 2, 589833, 65539, 2, 655369, 65539, 2, 720905, 65539, 2, 655368, 65539, 2, 720904, 65539, 2, 720903, 65539, 2, 1441819, 3, 1, 1507355, 3, 2, 1572891, 3, 3, 1441820, 65539, 1, 1507356, 65539, 2, 1572892, 65539, 3, 1441821, 131075, 1, 1507357, 131075, 2, 1572893, 131075, 3, 1441823, 3, 1, 1507359, 3, 2, 1572895, 3, 3, 1441824, 65539, 1, 1507360, 65539, 2, 1572896, 65539, 3, 1441825, 131075, 1, 1507361, 131075, 2, 1572897, 131075, 3, 1376291, 3, 1, 1376292, 65539, 1, 1376293, 65539, 1, 1376294, 65539, 1, 1376295, 65539, 1, 1376296, 65539, 1, 1376297, 65539, 1, 1376298, 65539, 1, 1376299, 65539, 1, 1376300, 65539, 1, 1376301, 65539, 1, 1441827, 3, 2, 1507363, 3, 2, 1572899, 3, 2, 1310747, 131075, 3, 1245211, 196611, 1, 1245212, 65539, 3, 1245213, 131075, 3, 1179677, 131075, 1, 1179676, 65539, 1, 1179675, 196611, 2, 1114139, 131075, 2, 1048603, 131075, 2, 983067, 131075, 2, 917531, 131075, 1, 917548, 3, 3, 983085, 3, 2, 917549, 262147, 1, 852013, 262147, 2, 852012, 3, 1, 786477, 3, 2, 1048621, 3, 2, 1114157, 3, 3, 1441828, 65539, 2, 1441829, 65539, 2, 1441830, 65539, 2, 1441831, 65539, 2, 1441832, 65539, 2, 1441833, 65539, 2, 1441834, 65539, 2, 1441835, 65539, 2, 1441836, 65539, 2, 1441837, 65539, 2, 1507364, 65539, 2, 1507365, 65539, 2, 1507366, 65539, 2, 1507367, 65539, 2, 1507368, 65539, 2, 1507369, 65539, 2, 1507370, 65539, 2, 1507371, 65539, 2, 1507372, 65539, 2, 1507373, 65539, 2, 1703962, 65539, 2, 1703963, 65539, 2, 1703964, 65539, 2, 1703965, 65539, 2, 1703966, 65539, 2, 1703967, 65539, 2, 1703968, 65539, 2, 1703969, 65539, 2, 1703970, 65539, 2, 1703971, 65539, 2, 1703972, 65539, 2, 1703973, 65539, 2, 1703974, 65539, 2, 1703975, 65539, 2, 1703976, 65539, 2, 1703977, 65539, 2, 1703978, 65539, 2, 1703979, 65539, 2, 1703980, 65539, 2, 1703981, 65539, 2, 1703982, 65539, 2, 1703983, 65539, 2)
+script = ExtResource("22_gv5jk")
 
-[node name="Player" type="AnimatedSprite2D" parent="SPRITES"]
-position = Vector2(96, 96)
-sprite_frames = ExtResource("5_1gvc2")
-animation = &"move"
-script = ExtResource("6_fu8am")
-sprite_name = "player"
-
-[node name="Coin" type="AnimatedSprite2D" parent="SPRITES"]
-position = Vector2(136, 96)
-sprite_frames = ExtResource("7_jijk1")
-animation = &"idle"
-script = ExtResource("6_fu8am")
-sprite_name = "coin"
-
-[node name="Enemy" type="AnimatedSprite2D" parent="SPRITES"]
-position = Vector2(176, 96)
-sprite_frames = ExtResource("8_1uygw")
-animation = &"move"
-script = ExtResource("6_fu8am")
-sprite_name = "enemy"
-
-[node name="Danger" type="AnimatedSprite2D" parent="SPRITES"]
-position = Vector2(216, 96)
-sprite_frames = ExtResource("9_ej2pt")
-animation = &"idle"
-script = ExtResource("6_fu8am")
-sprite_name = "danger"
-
-[node name="platform_static" type="AnimatedSprite2D" parent="SPRITES"]
-position = Vector2(256, 96)
-sprite_frames = ExtResource("10_s4gdo")
-animation = &"idle"
-script = ExtResource("6_fu8am")
-sprite_name = "platform_static"
-
-[node name="platform_move" type="AnimatedSprite2D" parent="SPRITES"]
-position = Vector2(96, 144)
-sprite_frames = ExtResource("11_mj3n5")
-animation = &"idle"
-script = ExtResource("6_fu8am")
-sprite_name = "platform_move"
-
-[node name="flag" type="AnimatedSprite2D" parent="SPRITES"]
-position = Vector2(136, 144)
-sprite_frames = ExtResource("12_663yc")
-animation = &"idle"
-script = ExtResource("6_fu8am")
-sprite_name = "flag"
-
-[node name="background" type="AnimatedSprite2D" parent="SPRITES"]
-position = Vector2(176, 144)
-sprite_frames = ExtResource("13_qljbc")
-animation = &"idle"
-script = ExtResource("6_fu8am")
-sprite_name = "background"
-
-[node name="background_parallax" type="AnimatedSprite2D" parent="SPRITES"]
-position = Vector2(216, 144)
-sprite_frames = ExtResource("14_sas53")
-animation = &"idle"
-script = ExtResource("6_fu8am")
-sprite_name = "background_parallax"
-
-[node name="decoration_small" type="AnimatedSprite2D" parent="SPRITES"]
-position = Vector2(256, 144)
-sprite_frames = ExtResource("15_5elp5")
-animation = &"idle"
-script = ExtResource("6_fu8am")
-sprite_name = "decoration_small"
-
-[node name="decortaion_mid" type="AnimatedSprite2D" parent="SPRITES"]
-position = Vector2(96, 184)
-sprite_frames = ExtResource("16_5voug")
-animation = &"idle"
-script = ExtResource("6_fu8am")
-sprite_name = "decortaion_mid"
-
-[node name="decoration_big" type="AnimatedSprite2D" parent="SPRITES"]
-position = Vector2(136, 184)
-sprite_frames = ExtResource("17_yx0yb")
-animation = &"idle"
-script = ExtResource("6_fu8am")
-sprite_name = "decoration_big"
-
-[node name="ui_live" type="AnimatedSprite2D" parent="SPRITES"]
-position = Vector2(176, 184)
-sprite_frames = ExtResource("18_542jj")
-animation = &"idle"
-script = ExtResource("6_fu8am")
-sprite_name = "ui_live"
-
-[node name="ui_coin" type="AnimatedSprite2D" parent="SPRITES"]
-position = Vector2(216, 184)
-sprite_frames = ExtResource("19_gv5uv")
-animation = &"idle"
-script = ExtResource("6_fu8am")
-sprite_name = "ui_coin"
-
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
-position = Vector2(656, 248)
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 288)
 zoom = Vector2(3, 3)
 limit_smoothed = true
 script = ExtResource("20_ljdcj")
-target = NodePath("../Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -512,6 +511,73 @@ theme_override_constants/margin_bottom = 10
 initial_position = 3
 size = Vector2i(325, 100)
 current_screen = 0
+
+[node name="HUD" type="Control" parent="CanvasLayer/Interface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="UILivesText" type="Control" parent="CanvasLayer/Interface/HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -52.0
+offset_right = 80.0
+offset_bottom = -20.0
+grow_vertical = 0
+
+[node name="ui_live2" type="AnimatedSprite2D" parent="CanvasLayer/Interface/HUD/UILivesText"]
+position = Vector2(16, 16)
+sprite_frames = ExtResource("18_542jj")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "ui_live"
+
+[node name="Label" type="Label" parent="CanvasLayer/Interface/HUD/UILivesText"]
+layout_mode = 2
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 56.0
+offset_bottom = 24.0
+theme = ExtResource("2_d2ujk")
+text = "x 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UICoins" type="Control" parent="CanvasLayer/Interface/HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -76.0
+offset_right = 80.0
+offset_bottom = -44.0
+grow_vertical = 0
+
+[node name="ui_coin2" type="AnimatedSprite2D" parent="CanvasLayer/Interface/HUD/UICoins"]
+position = Vector2(16, 16)
+sprite_frames = ExtResource("19_gv5uv")
+animation = &"idle"
+script = ExtResource("6_fu8am")
+sprite_name = "ui_coin"
+
+[node name="Label" type="Label" parent="CanvasLayer/Interface/HUD/UICoins"]
+layout_mode = 2
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 56.0
+offset_bottom = 24.0
+theme = ExtResource("2_d2ujk")
+text = "x 999"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/Interface/DevMenu/DevTool" to="CanvasLayer/Interface/DevMenu" method="_on_dev_tool_pressed"]
 [connection signal="pressed" from="CanvasLayer/Interface/DevMenu/DevToolPanel/DevToolClose" to="CanvasLayer/Interface/DevMenu" method="_on_dev_tool_close_pressed"]

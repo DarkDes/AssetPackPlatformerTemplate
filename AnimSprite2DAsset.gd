@@ -6,3 +6,4 @@ extends AnimatedSprite2D
 func _ready():
 	# super._ready()
 	APM.add_sprite(sprite_name, self)
+	play("idle")

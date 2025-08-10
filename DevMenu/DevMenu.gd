@@ -8,6 +8,8 @@ extends Control
 
 @onready var dir_scaner = $DirScaner
 
+var TILESET_ATLAS : AtlasTexture = preload("res://Tilemap/tileset_atlas.tres")
+
 const PLAYER_IDLE_0 = preload("res://Sprites/player_idle_0.png")
 
 func _ready():
@@ -49,7 +51,15 @@ func apply_assetpack(assetpack_data):
 	for sprite_key in sprites_dict:
 		apply_sprite_from_assetpack(sprite_key, sprites_dict[sprite_key], assetpack_data)
 		# print(sprite_key + " >> " + str(sprites_dict[sprite_key]))
-	
+	# TILEMAP
+	var tileset_path = assetpack_data.path.path_join("tilemap_0.png")
+	if FileAccess.file_exists(tileset_path):
+		var _image = Image.load_from_file(tileset_path)
+		var _texture = ImageTexture.create_from_image(_image)
+		TILESET_ATLAS.atlas = _texture
+		#tilemap
+
+
 func apply_sprite_from_assetpack(sprite_name, sprite_data, assetpack_data):
 	var animated_sprite_2d = APM.get_sprite(sprite_name) # $"../../Player"
 	if animated_sprite_2d == null:
@@ -76,7 +86,6 @@ func apply_sprite_from_assetpack(sprite_name, sprite_data, assetpack_data):
 			sframes.clear(anim);
 			for i in 5:
 				sframes.add_frame(anim,PLAYER_IDLE_0)
-			return
 		else:
 			print("Apply Asset: Found " + str(frames_count) + " of " + sprite_path)
 		
@@ -94,7 +103,13 @@ func apply_sprite_from_assetpack(sprite_name, sprite_data, assetpack_data):
 			push_warning(_path, _image, _texture)
 			sframes.add_frame(anim, _texture)
 		
-		animated_sprite_2d.scale = Vector2(32,32)/max_size
+		if APM.current.settings_data["pixel_art"] == true:
+			animated_sprite_2d.texture_filter = TEXTURE_FILTER_NEAREST;
+		else:
+			animated_sprite_2d.texture_filter = TEXTURE_FILTER_LINEAR;
+		# animated_sprite_2d.scale = Vector2(32,32)/max_size
+	
+
 		
 		# print(anim + " >> " + str(frames_count))
 	# animated_sprite_2d.play("idle")

@@ -1,7 +1,13 @@
 class_name AssetPackManager
 extends Node
 
-var current : AssetPackData = null
+signal asset_changed
+
+var current : AssetPackData = null :
+	set(value):
+		current = value
+		asset_changed.emit(value)
+		apply_to_all()
 
 @export var assets_data : Array[AssetPackData] = []
 @export var sprite_def  = {
@@ -16,13 +22,14 @@ var current : AssetPackData = null
 		"background": {},
 		"background_parallax": {},
 		"decoration_small": {},
-		"decortaion_mid": {},
+		"decoration_mid": {},
 		"decoration_big": {},
 		"ui_live": {},
 		"ui_coin": {},
 	}
 
 var sprites : Dictionary = {}
+var tilemaps : Array[TileMap] = []
 
 func add_sprite(sprite_name, sprite_node):
 	if sprite_name in sprites:
@@ -36,3 +43,17 @@ func get_sprite(sprite_name):
 	if sprites.has(sprite_name):
 		return sprites[sprite_name]
 	return null
+
+func add_tilemap(tilemap):
+	tilemaps.append(tilemap)
+
+func apply_to_all():
+	var _pixelart = current.get_setting("pixel_art", false, false)
+	for sprite in sprites:
+		print(sprite)
+		
+	for tilemap in tilemaps:
+		if _pixelart:
+			tilemap.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		else:
+			tilemap.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR

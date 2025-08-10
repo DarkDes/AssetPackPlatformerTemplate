@@ -1,12 +1,12 @@
 [gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://bvmmy11jhxye5"]
 
-[ext_resource type="Texture2D" uid="uid://e8gxocafhusc" path="res://Sprites/player_idle_0.png" id="1_yuc2v"]
+[ext_resource type="Texture2D" uid="uid://dl81a2u4l8maa" path="res://Sprites/Defaults/danger_0.png" id="1_fbvol"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_yuc2v")
+"texture": ExtResource("1_fbvol")
 }],
 "loop": true,
 "name": &"idle",

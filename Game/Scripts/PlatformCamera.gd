@@ -10,6 +10,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if target == null:
-		push_error("Camera: Target is null")
+		#push_error("Camera: Target is null")
+		return
 	else:
 		global_position = target.global_position

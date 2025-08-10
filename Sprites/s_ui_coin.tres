@@ -1,12 +1,12 @@
 [gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://cqdv0ndqlw243"]
 
-[ext_resource type="Texture2D" uid="uid://e8gxocafhusc" path="res://Sprites/player_idle_0.png" id="1_0n1ny"]
+[ext_resource type="Texture2D" uid="uid://dh8etpbjcbhjl" path="res://Sprites/Defaults/ui_coin_0.png" id="1_1wpyy"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_0n1ny")
+"texture": ExtResource("1_1wpyy")
 }],
 "loop": true,
 "name": &"idle",

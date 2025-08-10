@@ -25,8 +25,9 @@ sprite_name = "player"
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_8w4ye")
 
-[node name="AnimationController" type="Node" parent="."]
+[node name="AnimationController" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("4_bcgyv")
+sprite = NodePath("../PlayerSprite")
 
 [node name="PickupArea" type="Area2D" parent="."]
 collision_layer = 2

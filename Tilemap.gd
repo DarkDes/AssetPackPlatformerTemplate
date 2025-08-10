@@ -8,6 +8,7 @@ var tiles = null
 
 func _ready():
 	tiles = TILESET_ATLAS.atlas
+	APM.add_tilemap(self)
 	
 func _input(event):
 	if event is InputEventKey:
