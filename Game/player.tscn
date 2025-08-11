@@ -1,21 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3tibanldaq15"]
+[gd_scene load_steps=10 format=3 uid="uid://d3tibanldaq15"]
 
 [ext_resource type="Script" path="res://Game/Scripts/Player.gd" id="1_csie7"]
 [ext_resource type="SpriteFrames" uid="uid://dtq7yttb4sh8v" path="res://Sprites/s_player.tres" id="2_foqg2"]
+[ext_resource type="Script" path="res://Game/PlayerX3.gd" id="2_gx6ni"]
 [ext_resource type="Script" path="res://AssetPack/AnimSprite2DAsset.gd" id="3_d1cs1"]
 [ext_resource type="Script" path="res://Game/Scripts/PlayerAnimations.gd" id="4_bcgyv"]
 [ext_resource type="Script" path="res://Game/Scripts/PlayerPickupArea.gd" id="5_vu7t8"]
+[ext_resource type="Script" path="res://Game/Scripts/PlayerDamageController.gd" id="7_sol0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8w4ye"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ucn8"]
 size = Vector2(32, 32)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["damageable"]]
 script = ExtResource("1_csie7")
 
-[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+[node name="SpritePivot" type="Node2D" parent="."]
 position = Vector2(0, -16)
+script = ExtResource("2_gx6ni")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="SpritePivot"]
 sprite_frames = ExtResource("2_foqg2")
 animation = &"idle"
 script = ExtResource("3_d1cs1")
@@ -27,7 +32,7 @@ shape = SubResource("RectangleShape2D_8w4ye")
 
 [node name="AnimationController" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("4_bcgyv")
-sprite = NodePath("../PlayerSprite")
+sprite = NodePath("../SpritePivot/PlayerSprite")
 
 [node name="PickupArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -38,3 +43,6 @@ script = ExtResource("5_vu7t8")
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_3ucn8")
 debug_color = Color(0.767267, 0.441774, 0.188487, 0.42)
+
+[node name="DamageController" type="Node" parent="."]
+script = ExtResource("7_sol0l")

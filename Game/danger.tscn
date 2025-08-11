@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://v2syfmr6gim6"]
+
+[ext_resource type="Script" path="res://Game/Scripts/Danger.gd" id="1_balc7"]
+[ext_resource type="Script" path="res://Game/PlayerX3.gd" id="1_psgnp"]
+[ext_resource type="SpriteFrames" uid="uid://bvmmy11jhxye5" path="res://Sprites/s_danger.tres" id="2_qcdf0"]
+[ext_resource type="Script" path="res://AssetPack/AnimSprite2DAsset.gd" id="3_k075p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6s544"]
+size = Vector2(80, 40)
+
+[node name="Danger" type="Area2D"]
+position = Vector2(0, 24)
+script = ExtResource("1_balc7")
+
+[node name="Node2DSnapping" type="Node2D" parent="."]
+position = Vector2(0, -24)
+script = ExtResource("1_psgnp")
+
+[node name="Danger" type="AnimatedSprite2D" parent="Node2DSnapping"]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("2_qcdf0")
+animation = &"idle"
+script = ExtResource("3_k075p")
+sprite_name = "danger"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_6s544")

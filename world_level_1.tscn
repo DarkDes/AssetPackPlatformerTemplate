@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpagqsfi3oiha"]
+
+[ext_resource type="PackedScene" uid="uid://d3tibanldaq15" path="res://Game/player.tscn" id="1_crrwq"]
+[ext_resource type="TileSet" uid="uid://c60p71ipbiuek" path="res://Tilemap/tileset_x3.tres" id="2_gjo2t"]
+[ext_resource type="Script" path="res://Game/PlayerX3.gd" id="2_owsdn"]
+[ext_resource type="Script" path="res://Tilemap.gd" id="3_0uo6m"]
+[ext_resource type="TileSet" uid="uid://e68a7xtwxt8q" path="res://Tilemap/tileset_object.tres" id="4_2f53n"]
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_crrwq")]
+
+[node name="Node2DSnapping" type="Node2D" parent="."]
+script = ExtResource("2_owsdn")
+
+[node name="Camera2D" type="Camera2D" parent="Node2DSnapping"]
+
+[node name="TileMapAsset" type="TileMap" parent="."]
+tile_set = ExtResource("2_gjo2t")
+format = 2
+layer_0/tile_data = PackedInt32Array(327678, 65536, 1, 327679, 65536, 1, 262144, 65536, 1, 262145, 65536, 1, 262146, 65536, 1, 262147, 65536, 1, 262148, 65536, 1, 196613, 0, 1, 131078, 0, 1, 65543, 0, 1, 8, 0, 1, 262141, 131072, 1, 196604, 131072, 1, 196601, 65536, 1, 196602, 65536, 1, 196603, 65536, 1, 262137, 65536, 2, 262138, 65536, 2, 327673, 65536, 3, 327674, 65536, 3, 327675, 65536, 3, 327676, 65536, 3, 327677, 65536, 3, 196598, 65536, 1, 196599, 65536, 1, 196600, 65536, 1)
+script = ExtResource("3_0uo6m")
+
+[node name="TileMapObjects" type="TileMap" parent="."]
+tile_set = ExtResource("4_2f53n")
+format = 2
+layer_0/tile_data = PackedInt32Array(131062, 1, 65536, 131063, 1, 65536, 131064, 1, 65536, 131065, 1, 65536, 131067, 1, 65536, 131068, 1, 65536, 131066, 1, 65536, 131077, 1, 65536, 65542, 1, 65536, 7, 1, 65536, -65528, 1, 65536, 262142, 1, 131072)

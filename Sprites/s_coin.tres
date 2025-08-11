@@ -1,13 +1,13 @@
 [gd_resource type="SpriteFrames" script_class="SpriteFramesAsset" load_steps=3 format=3 uid="uid://bajkklc3swfud"]
 
-[ext_resource type="Texture2D" uid="uid://dxrom3awjy2bk" path="res://Assets/darkdes/template_pixel/coin_0.png" id="1_00jyx"]
+[ext_resource type="Texture2D" uid="uid://cue43xp5rx4j1" path="res://Sprites/Defaults/coin_0.png" id="1_odjb0"]
 [ext_resource type="Script" path="res://AssetPack/SpriteFramesAsset.gd" id="2_jcskn"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_00jyx")
+"texture": ExtResource("1_odjb0")
 }],
 "loop": true,
 "name": &"idle",

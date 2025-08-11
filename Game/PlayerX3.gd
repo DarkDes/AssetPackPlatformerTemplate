@@ -1,8 +1,16 @@
-class_name PlayerPlatformerX3
-extends PlayerPlatformer
-@onready var player_sprite = $PlayerSprite
+class_name Node2DSnapping
+extends Node2D
 
-var snapping = true
+@export var snapping_pixels = 3
+@export var snapping = true : 
+	set(value):
+		snapping = value
+		if snapping == false:
+			sprite.global_position = global_position
+var sprite : Node2D = null
+
+func _ready():
+	sprite = get_child(0) as Node2D
 
 func _input(event):
 	if Input.is_key_pressed(KEY_T):
@@ -11,9 +19,4 @@ func _input(event):
 func _process(delta):
 	#super._process(delta)
 	if snapping:
-		var _pos = global_position
-		_pos.x = snapped(_pos.x, 3)
-		_pos.y = snapped(_pos.y, 3)
-		player_sprite.global_position = _pos
-	else:
-		player_sprite.global_position = global_position
+		sprite.global_position = global_position.snapped(Vector2(snapping_pixels, snapping_pixels))

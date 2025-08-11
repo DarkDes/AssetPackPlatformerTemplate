@@ -601,9 +601,8 @@ vertical_alignment = 1
 [node name="Player2" parent="." instance=ExtResource("3_jxqyn")]
 position = Vector2(988, 304)
 script = ExtResource("26_rwbyh")
-
-[node name="PlayerSprite" parent="Player2" index="0"]
-scale = Vector2(3, 3)
+snapping_pixels = 3
+snapping = true
 
 [node name="Collision" parent="Player2" index="1"]
 shape = SubResource("RectangleShape2D_p2hwq")
