@@ -10,8 +10,6 @@ extends Control
 
 var TILESET_ATLAS : AtlasTexture = preload("res://Tilemap/tileset_atlas.tres")
 
-const PLAYER_IDLE_0 = preload("res://Sprites/player_idle_0.png")
-
 func _ready():
 	dev_tool_panel.visible = false;
 	dev_tool_button.visible = true;
@@ -46,6 +44,9 @@ func _on_asset_pack_selector_item_selected(index):
 	APM.current = asset_data;
 	apply_assetpack(asset_data)
 
+## 
+## 
+## 
 func apply_assetpack(assetpack_data):
 	var sprites_dict = APM.sprite_def as Dictionary
 	for sprite_key in sprites_dict:
@@ -56,66 +57,55 @@ func apply_assetpack(assetpack_data):
 	if FileAccess.file_exists(tileset_path):
 		var _image = Image.load_from_file(tileset_path)
 		var _texture = ImageTexture.create_from_image(_image)
-		TILESET_ATLAS.atlas = _texture
+		for tileset in APM.tilesets:
+			var _tile_source_id = tileset.get_source_id(0)
+			var _tile_source = tileset.get_source(_tile_source_id)
+			var _tile_atlas = _tile_source as TileSetAtlasSource
+			if tileset is TileSetAsset:
+				if tileset.pixel_size == 3 and _image.get_size() == Vector2i(80,80):
+					_image.resize(80*3, 80*3, Image.INTERPOLATE_NEAREST)
+					_texture = ImageTexture.create_from_image(_image)
+			_tile_atlas.texture = _texture
+
+		#TILESET_ATLAS.atlas = _texture
 		#tilemap
 
 
 func apply_sprite_from_assetpack(sprite_name, sprite_data, assetpack_data):
-	var animated_sprite_2d = APM.get_sprite(sprite_name) # $"../../Player"
-	if animated_sprite_2d == null:
-		print("apply_sprite_from_assetpack: Cant find sprite with name " + sprite_name )
-		return
-	
-	# animated_sprite_2d.texture_filter = TEXTURE_FILTER_NEAREST
-	var sframes : SpriteFrames = animated_sprite_2d.sprite_frames
-	var anims = sframes.get_animation_names()
-	print(anims)
-	for anim in anims:
+	var sframes : SpriteFramesAsset = APM.get_sprite(sprite_name)
+	sframes.pixelated = assetpack_data.get_setting("pixel_art", false, false)
+
+	for anim in sframes.get_animation_names():
 		var sprite_path = sprite_name + "_"
 		if "animations" in sprite_data: 
 			sprite_path += anim + "_"
 		sprite_path = assetpack_data.path.path_join(sprite_path)
 		
-		print("Apply Asset: Looking for " + sprite_name + " in " + sprite_path + "...")
+		print("Apply Asset: Looking for " + sprite_name + " " + anim ) # + " in " + sprite_path + "...")
 		
 		var frames_count = 0
 		while(FileAccess.file_exists(sprite_path + str(frames_count) + ".png")): frames_count += 1
 		if frames_count == 0:
 			push_error("Apply Asset: Sprites not found!")
-			# Need set default
-			sframes.clear(anim);
-			for i in 5:
-				sframes.add_frame(anim,PLAYER_IDLE_0)
+			sframes.default_animation(anim)
 		else:
 			print("Apply Asset: Found " + str(frames_count) + " of " + sprite_path)
-		
-		#sframes.set_animation_speed(anim, assetpack_data.)
-		var max_size = Vector2(1,1)
-		sframes.clear(anim);
-		for i in frames_count:
-			var _path = sprite_path + str(i) + ".png"
-			var _image = Image.load_from_file(_path)
-			var _texture = ImageTexture.create_from_image(_image)
 			
-			max_size.x = max(max_size.x, _image.get_size().x)
-			max_size.y = max(max_size.y, _image.get_size().y)
+			var fps = assetpack_data.get_setting("sprites_" + sprite_name + "_" + anim + "_fps", 
+				assetpack_data.get_setting("default_fps", 5))
+			sframes.set_animation_speed(anim, fps)
 			
-			push_warning(_path, _image, _texture)
-			sframes.add_frame(anim, _texture)
-		
-		if APM.current.settings_data["pixel_art"] == true:
-			animated_sprite_2d.texture_filter = TEXTURE_FILTER_NEAREST;
-		else:
-			animated_sprite_2d.texture_filter = TEXTURE_FILTER_LINEAR;
-		# animated_sprite_2d.scale = Vector2(32,32)/max_size
-	
-
-		
-		# print(anim + " >> " + str(frames_count))
-	# animated_sprite_2d.play("idle")
-		#for i in sframes.get_frame_count(anim):
-			# var _path = assetpack_data.path + str(i+1) +".png"# "#OS.get_executable_path().get_base_dir().path_join("robot/s_robot_char_idle" + str(i) +".png")
-			# var _image = Image.load_from_file(_path)
-			# var _texture = ImageTexture.create_from_image(_image)
-			# s.set_frame("default", i, _texture, _duration);
+			var max_size = Vector2(1,1)
+			sframes.clear(anim);
+			for i in frames_count:
+				var _path = sprite_path + str(i) + ".png"
+				var _image = Image.load_from_file(_path)
+				var _texture = ImageTexture.create_from_image(_image)
+				
+				max_size.x = max(max_size.x, _image.get_size().x)
+				max_size.y = max(max_size.y, _image.get_size().y)
+				
+				push_warning(_path, _image, _texture)
+				sframes.add_frame(anim, _texture)
+			sframes.send_updated()
 			

@@ -1,10 +1,27 @@
 {
+	"default_fps": 5,
 	"pixel_art": true,
 	"sprites": {
 		"player": {
 			"animations": {
-				"idle": { "fps": 5 },
-			},
-		},	
+				"idle": {
+					"fps": 5
+				}
+			}
+		}
 	},
+	"sprites_coin_idle_fps": 5,
+	"sprites_danger_idle_fps": 5,
+	"sprites_decoration_big_idle_fps": 5,
+	"sprites_decoration_mid_idle_fps": 5,
+	"sprites_decoration_small_idle_fps": 5,
+	"sprites_enemy_move_fps": 5,
+	"sprites_flag_idle_fps": 5,
+	"sprites_platform_move_idle_fps": 5,
+	"sprites_platform_static_idle_fps": 5,
+	"sprites_player_idle_fps": 12,
+	"sprites_ui_coin_idle_fps": 5,
+	"sprites_ui_live_idle_fps": 5,
+	"ui_coins_method": "NUMBERS",
+	"ui_lives_method": "NUMBERS"
 }

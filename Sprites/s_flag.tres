@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://b1ieprdw6omlf"]
+[gd_resource type="SpriteFrames" script_class="SpriteFramesAsset" load_steps=3 format=3 uid="uid://b1ieprdw6omlf"]
 
 [ext_resource type="Texture2D" uid="uid://60al8nf0pj8s" path="res://Sprites/Defaults/flag_0.png" id="1_3v5s5"]
+[ext_resource type="Script" path="res://AssetPack/SpriteFramesAsset.gd" id="2_ygv16"]
 
 [resource]
 animations = [{
@@ -12,3 +13,5 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }]
+script = ExtResource("2_ygv16")
+pixelated = false

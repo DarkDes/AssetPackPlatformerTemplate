@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Game/Scripts/Player.gd" id="1_csie7"]
 [ext_resource type="SpriteFrames" uid="uid://dtq7yttb4sh8v" path="res://Sprites/s_player.tres" id="2_foqg2"]
-[ext_resource type="Script" path="res://AnimSprite2DAsset.gd" id="3_d1cs1"]
+[ext_resource type="Script" path="res://AssetPack/AnimSprite2DAsset.gd" id="3_d1cs1"]
 [ext_resource type="Script" path="res://Game/Scripts/PlayerAnimations.gd" id="4_bcgyv"]
 [ext_resource type="Script" path="res://Game/Scripts/PlayerPickupArea.gd" id="5_vu7t8"]
 
@@ -17,7 +17,7 @@ script = ExtResource("1_csie7")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = ExtResource("2_foqg2")
-animation = &"move"
+animation = &"idle"
 script = ExtResource("3_d1cs1")
 sprite_name = "player"
 

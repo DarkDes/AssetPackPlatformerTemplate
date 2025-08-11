@@ -1,24 +1,10 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://qh1pssldqv7m"]
+[gd_resource type="TileSet" script_class="TileSetAsset" load_steps=4 format=3 uid="uid://qh1pssldqv7m"]
 
-[ext_resource type="Texture2D" uid="uid://cgkdy0vrbqjqi" path="res://Tilemap/tileset_atlas.tres" id="1_rmlim"]
+[ext_resource type="Texture2D" uid="uid://dv43aiv6gekkm" path="res://Tilemap/tilemap_0.png" id="1_3euda"]
+[ext_resource type="Script" path="res://AssetPack/TileSetAsset.gd" id="1_tljyq"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ru6nc"]
-texture = ExtResource("1_rmlim")
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
-2:0/0 = 0
-2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:0/0/physics_layer_0/angular_velocity = 0.0
-3:0/0 = 0
-3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:0/0/physics_layer_0/angular_velocity = 0.0
-4:0/0 = 0
-4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-4:0/0/physics_layer_0/angular_velocity = 0.0
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ofsff"]
+texture = ExtResource("1_3euda")
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
@@ -71,28 +57,9 @@ texture = ExtResource("1_rmlim")
 2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:3/0/physics_layer_0/angular_velocity = 0.0
 2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-3:3/0 = 0
-3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:3/0/physics_layer_0/angular_velocity = 0.0
-4:3/0 = 0
-4:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-4:3/0/physics_layer_0/angular_velocity = 0.0
-0:4/0 = 0
-0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:4/0/physics_layer_0/angular_velocity = 0.0
-1:4/0 = 0
-1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:4/0/physics_layer_0/angular_velocity = 0.0
-2:4/0 = 0
-2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:4/0/physics_layer_0/angular_velocity = 0.0
-3:4/0 = 0
-3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:4/0/physics_layer_0/angular_velocity = 0.0
-4:4/0 = 0
-4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-4:4/0/physics_layer_0/angular_velocity = 0.0
 
 [resource]
 physics_layer_0/collision_layer = 1
-sources/3 = SubResource("TileSetAtlasSource_ru6nc")
+sources/0 = SubResource("TileSetAtlasSource_ofsff")
+script = ExtResource("1_tljyq")
+pixel_size = 1

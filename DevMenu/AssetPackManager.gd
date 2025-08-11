@@ -30,14 +30,25 @@ var current : AssetPackData = null :
 
 var sprites : Dictionary = {}
 var tilemaps : Array[TileMap] = []
+var tilesets : Array[TileSetAsset] = []
 
+func _ready():
+	for sprite_name in sprite_def as Dictionary:
+		var _sprite = load("res://Sprites/s_" + sprite_name + ".tres")
+		sprites[sprite_name] = _sprite
+	
+	tilesets.append(load("res://Tilemap/tileset_0.tres"))
+	tilesets.append(load("res://Tilemap/tileset_x3.tres"))
+	
 func add_sprite(sprite_name, sprite_node):
-	if sprite_name in sprites:
-		# Already here, send changes based on data
-		sprites[sprite_name] = sprite_node;
-	else:
-		sprites[sprite_name] = sprite_node;
-	print( "APM > Sprite set " + sprite_name );
+	pass
+	
+	#if sprite_name in sprites:
+		## Already here, send changes based on data
+		#sprites[sprite_name] = sprite_node;
+	#else:
+		#sprites[sprite_name] = sprite_node;
+	#print( "APM > Sprite set " + sprite_name );
 	
 func get_sprite(sprite_name):
 	if sprites.has(sprite_name):

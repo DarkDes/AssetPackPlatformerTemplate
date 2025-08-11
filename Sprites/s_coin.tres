@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://bajkklc3swfud"]
+[gd_resource type="SpriteFrames" script_class="SpriteFramesAsset" load_steps=3 format=3 uid="uid://bajkklc3swfud"]
 
 [ext_resource type="Texture2D" uid="uid://dxrom3awjy2bk" path="res://Assets/darkdes/template_pixel/coin_0.png" id="1_00jyx"]
+[ext_resource type="Script" path="res://AssetPack/SpriteFramesAsset.gd" id="2_jcskn"]
 
 [resource]
 animations = [{
@@ -12,3 +13,5 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }]
+script = ExtResource("2_jcskn")
+pixelated = false

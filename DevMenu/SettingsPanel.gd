@@ -140,6 +140,8 @@ func _on_fps_spin_value_changed(value):
 	#_config[animation_selected_name][K_FPS] = value
 	if ignore_change_fps == false:
 		asset_data.set_setting(get_current_sprite_animation_key(K_FPS), value)
+		APM.get_sprite(sprite_selected_name).set_animation_speed(animation_selected_name, value)
+	
 	ignore_change_fps = false
 	delete_button.disabled = false
 	# Apply FPS to Anim

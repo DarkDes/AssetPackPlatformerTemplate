@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://csfpgr4mplpyo"]
+[gd_resource type="SpriteFrames" script_class="SpriteFramesAsset" load_steps=3 format=3 uid="uid://csfpgr4mplpyo"]
 
 [ext_resource type="Texture2D" uid="uid://dm8m8s12j48wb" path="res://Sprites/Defaults/decoration_big_0.png" id="1_stgf0"]
+[ext_resource type="Script" path="res://AssetPack/SpriteFramesAsset.gd" id="2_4rwoy"]
 
 [resource]
 animations = [{
@@ -12,3 +13,5 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }]
+script = ExtResource("2_4rwoy")
+pixelated = false

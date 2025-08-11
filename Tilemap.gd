@@ -1,3 +1,4 @@
+class_name TileMapAsset
 extends TileMap
 
 var TILESET_ATLAS : AtlasTexture = preload("res://Tilemap/tileset_atlas.tres")
@@ -9,7 +10,15 @@ var tiles = null
 func _ready():
 	tiles = TILESET_ATLAS.atlas
 	APM.add_tilemap(self)
-	
+	#sprite_data.texture_changed.connect(texture_changed)
+	#texture_changed(sprite_data, sprite_data.texture)
+#
+#func texture_changed(sdata, _texture):
+	#texture = _texture
+
+
+
+
 func _input(event):
 	if event is InputEventKey:
 		if event.keycode == KEY_CTRL and event.is_pressed():

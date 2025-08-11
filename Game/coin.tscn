@@ -2,7 +2,7 @@
 
 [ext_resource type="SpriteFrames" uid="uid://bajkklc3swfud" path="res://Sprites/s_coin.tres" id="1_3fe4m"]
 [ext_resource type="Script" path="res://Game/Scripts/Coin.gd" id="1_h420y"]
-[ext_resource type="Script" path="res://AnimSprite2DAsset.gd" id="2_slvk0"]
+[ext_resource type="Script" path="res://AssetPack/AnimSprite2DAsset.gd" id="2_slvk0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqkan"]
 size = Vector2(10, 10)

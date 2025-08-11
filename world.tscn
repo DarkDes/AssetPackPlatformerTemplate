@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c762cjbn7lvhc"]
+[gd_scene load_steps=30 format=3 uid="uid://c762cjbn7lvhc"]
 
 [ext_resource type="Script" path="res://DevMenu/DevMenu.gd" id="1_n8tci"]
 [ext_resource type="Theme" uid="uid://camj2h6115iy2" path="res://DevMenu/ui_devmenu_theme.tres" id="2_d2ujk"]
@@ -7,27 +7,32 @@
 [ext_resource type="PackedScene" uid="uid://l1iatj037t3y" path="res://Game/coin.tscn" id="4_1ushc"]
 [ext_resource type="Shortcut" uid="uid://cgcruitxegn2a" path="res://DevMenu/shortcut_open_devtool.tres" id="4_3sunq"]
 [ext_resource type="SpriteFrames" uid="uid://dtq7yttb4sh8v" path="res://Sprites/s_player.tres" id="5_1gvc2"]
-[ext_resource type="Script" path="res://AnimSprite2DAsset.gd" id="6_fu8am"]
+[ext_resource type="Script" path="res://AssetPack/AnimSprite2DAsset.gd" id="6_fu8am"]
 [ext_resource type="SpriteFrames" uid="uid://bajkklc3swfud" path="res://Sprites/s_coin.tres" id="7_jijk1"]
 [ext_resource type="SpriteFrames" uid="uid://c2qfrreuusi8w" path="res://Sprites/s_enemy.tres" id="8_1uygw"]
 [ext_resource type="SpriteFrames" uid="uid://bvmmy11jhxye5" path="res://Sprites/s_danger.tres" id="9_ej2pt"]
 [ext_resource type="SpriteFrames" uid="uid://d0sx1kw0eethl" path="res://Sprites/s_platform_static.tres" id="10_s4gdo"]
 [ext_resource type="SpriteFrames" uid="uid://bx4qjh144bdw2" path="res://Sprites/s_platform_move.tres" id="11_mj3n5"]
 [ext_resource type="SpriteFrames" uid="uid://b1ieprdw6omlf" path="res://Sprites/s_flag.tres" id="12_663yc"]
-[ext_resource type="SpriteFrames" uid="uid://b7on802l8lji3" path="res://Sprites/s_bg.tres" id="13_qljbc"]
-[ext_resource type="SpriteFrames" uid="uid://4xbo2t8q82td" path="res://Sprites/s_bg_px.tres" id="14_sas53"]
+[ext_resource type="SpriteFrames" uid="uid://b7on802l8lji3" path="res://Sprites/s_background.tres" id="13_qljbc"]
+[ext_resource type="SpriteFrames" uid="uid://4xbo2t8q82td" path="res://Sprites/s_background_parallax.tres" id="14_sas53"]
 [ext_resource type="SpriteFrames" uid="uid://c53cp8bomcry4" path="res://Sprites/s_decoration_small.tres" id="15_5elp5"]
 [ext_resource type="SpriteFrames" uid="uid://dfkqady4xdfq8" path="res://Sprites/s_decoration_mid.tres" id="16_5voug"]
 [ext_resource type="SpriteFrames" uid="uid://csfpgr4mplpyo" path="res://Sprites/s_decoration_big.tres" id="17_yx0yb"]
 [ext_resource type="SpriteFrames" uid="uid://tdk7eg7ju4tj" path="res://Sprites/s_ui_live.tres" id="18_542jj"]
 [ext_resource type="SpriteFrames" uid="uid://cqdv0ndqlw243" path="res://Sprites/s_ui_coin.tres" id="19_gv5uv"]
 [ext_resource type="Script" path="res://DevMenu/SettingsPanel.gd" id="20_bkcxn"]
+[ext_resource type="TileSet" uid="uid://c60p71ipbiuek" path="res://Tilemap/tileset_x3.tres" id="20_jwy78"]
 [ext_resource type="Script" path="res://Game/Scripts/PlatformCamera.gd" id="20_ljdcj"]
 [ext_resource type="TileSet" uid="uid://qh1pssldqv7m" path="res://Tilemap/tileset_0.tres" id="21_dm01q"]
 [ext_resource type="Script" path="res://Tilemap.gd" id="22_gv5jk"]
+[ext_resource type="Script" path="res://Game/PlayerX3.gd" id="26_rwbyh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hqr5r"]
 font_color = Color(0.466181, 0.466181, 0.466181, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2hwq"]
+size = Vector2(60, 60)
 
 [node name="World" type="Node2D"]
 
@@ -147,15 +152,29 @@ position = Vector2(736, 264)
 position = Vector2(760, 264)
 
 [node name="Tilemap" type="TileMap" parent="."]
-scale = Vector2(1.093, 1)
 tile_set = ExtResource("21_dm01q")
 format = 2
-layer_0/tile_data = PackedInt32Array(524299, 3, 1, 524300, 65539, 1, 524301, 65539, 1, 524302, 65539, 1, 524303, 65539, 1, 458768, 3, 1, 524304, 262147, 2, 458769, 65539, 1, 458770, 65539, 1, 458771, 65539, 1, 589835, 3, 2, 655371, 3, 2, 720907, 3, 2, 589836, 65539, 2, 589837, 65539, 2, 589838, 65539, 2, 589839, 65539, 2, 589840, 65539, 2, 655376, 65539, 2, 720911, 65539, 2, 720910, 65539, 2, 655374, 65539, 2, 655373, 65539, 2, 655372, 65539, 2, 720908, 65539, 2, 720909, 65539, 2, 655375, 65539, 2, 524305, 65539, 2, -65533, 65539, 2, 3, 65539, 2, 65539, 65539, 2, 131075, 65539, 2, 196611, 65539, 2, 262147, 65539, 2, 327683, 65539, 2, 393219, 65539, 2, 458755, 65539, 2, 524291, 65539, 2, 589827, 65539, 2, 655363, 65539, 2, 720899, 65539, 2, 786435, 65539, 2, 786436, 65539, 2, 786437, 65539, 2, 786438, 65539, 2, 786439, 65539, 2, 786440, 65539, 2, 786441, 65539, 2, 786442, 65539, 2, 589834, 65539, 2, 655370, 65539, 2, 720906, 65539, 2, 589833, 65539, 2, 655369, 65539, 2, 720905, 65539, 2, 655368, 65539, 2, 720904, 65539, 2, 720903, 65539, 2, 1441819, 3, 1, 1507355, 3, 2, 1572891, 3, 3, 1441820, 65539, 1, 1507356, 65539, 2, 1572892, 65539, 3, 1441821, 131075, 1, 1507357, 131075, 2, 1572893, 131075, 3, 1441823, 3, 1, 1507359, 3, 2, 1572895, 3, 3, 1441824, 65539, 1, 1507360, 65539, 2, 1572896, 65539, 3, 1441825, 131075, 1, 1507361, 131075, 2, 1572897, 131075, 3, 1376291, 3, 1, 1376292, 65539, 1, 1376293, 65539, 1, 1376294, 65539, 1, 1376295, 65539, 1, 1376296, 65539, 1, 1376297, 65539, 1, 1376298, 65539, 1, 1376299, 65539, 1, 1376300, 65539, 1, 1376301, 65539, 1, 1441827, 3, 2, 1507363, 3, 2, 1572899, 3, 2, 1310747, 131075, 3, 1245211, 196611, 1, 1245212, 65539, 3, 1245213, 131075, 3, 1179677, 131075, 1, 1179676, 65539, 1, 1179675, 196611, 2, 1114139, 131075, 2, 1048603, 131075, 2, 983067, 131075, 2, 917531, 131075, 1, 917548, 3, 3, 983085, 3, 2, 917549, 262147, 1, 852013, 262147, 2, 852012, 3, 1, 786477, 3, 2, 1048621, 3, 2, 1114157, 3, 3, 1441828, 65539, 2, 1441829, 65539, 2, 1441830, 65539, 2, 1441831, 65539, 2, 1441832, 65539, 2, 1441833, 65539, 2, 1441834, 65539, 2, 1441835, 65539, 2, 1441836, 65539, 2, 1441837, 65539, 2, 1507364, 65539, 2, 1507365, 65539, 2, 1507366, 65539, 2, 1507367, 65539, 2, 1507368, 65539, 2, 1507369, 65539, 2, 1507370, 65539, 2, 1507371, 65539, 2, 1507372, 65539, 2, 1507373, 65539, 2, 1703962, 65539, 2, 1703963, 65539, 2, 1703964, 65539, 2, 1703965, 65539, 2, 1703966, 65539, 2, 1703967, 65539, 2, 1703968, 65539, 2, 1703969, 65539, 2, 1703970, 65539, 2, 1703971, 65539, 2, 1703972, 65539, 2, 1703973, 65539, 2, 1703974, 65539, 2, 1703975, 65539, 2, 1703976, 65539, 2, 1703977, 65539, 2, 1703978, 65539, 2, 1703979, 65539, 2, 1703980, 65539, 2, 1703981, 65539, 2, 1703982, 65539, 2, 1703983, 65539, 2)
+layer_0/tile_data = PackedInt32Array(524299, 3, 1, 524300, 65539, 1, 524301, 65539, 1, 524302, 65539, 1, 524303, 65539, 1, 458768, 3, 1, 524304, 262147, 2, 458769, 65539, 1, 458770, 65539, 1, 458771, 65539, 1, 589835, 3, 2, 655371, 3, 2, 720907, 3, 2, 589836, 65539, 2, 589837, 65539, 2, 589838, 65539, 2, 589839, 65539, 2, 589840, 65539, 2, 655376, 65539, 2, 720911, 65539, 2, 720910, 65539, 2, 655374, 65539, 2, 655373, 65539, 2, 655372, 65539, 2, 720908, 65539, 2, 720909, 65539, 2, 655375, 65539, 2, 524305, 65539, 2, -65533, 65539, 2, 3, 65539, 2, 65539, 65539, 2, 131075, 65539, 2, 196611, 65539, 2, 262147, 65539, 2, 327683, 65539, 2, 393219, 65539, 2, 458755, 65539, 2, 524291, 65539, 2, 589827, 65539, 2, 655363, 65539, 2, 720899, 65539, 2, 786435, 65539, 2, 786436, 65539, 2, 786437, 65539, 2, 786438, 65539, 2, 786439, 65539, 2, 786440, 65539, 2, 786441, 65539, 2, 786442, 65539, 2, 589834, 65539, 2, 655370, 65539, 2, 720906, 65539, 2, 589833, 65539, 2, 655369, 65539, 2, 720905, 65539, 2, 655368, 65539, 2, 720904, 65539, 2, 720903, 65539, 2, 1441819, 131072, 1, 1507355, 131072, 1, 1572891, 131072, 1, 1441820, 0, 1, 1507356, 0, 1, 1572892, 0, 1, 1441821, 65536, 1, 1507357, 65536, 1, 1572893, 65536, 1, 1441823, 0, 1, 1507359, 0, 1, 1572895, 0, 1, 1441824, 65536, 1, 1507360, 65536, 1, 1572896, 65536, 1, 1441825, 131072, 1, 1507361, 131072, 1, 1572897, 131072, 1, 1376291, 0, 1, 1376292, 65536, 1, 1376293, 0, 1, 1376294, 65536, 1, 1376295, 0, 1, 1376296, 65536, 1, 1376297, 131072, 1, 1376298, 65536, 1, 1376299, 131072, 1, 1376300, 65536, 1, 1376301, 131072, 1, 1441827, 0, 1, 1507363, 0, 1, 1572899, 3, 2, 1310747, 131072, 1, 1245211, 0, 1, 1245212, 65536, 1, 1245213, 131072, 1, 1179677, 131072, 1, 1179676, 65536, 1, 1179675, 0, 1, 1114139, 131072, 1, 1048603, 131072, 1, 983067, 131072, 1, 917531, 131072, 1, 917548, 0, 1, 983085, 0, 1, 917549, 65536, 1, 852013, 65536, 1, 852012, 0, 1, 786477, 0, 1, 1048621, 0, 1, 1114157, 0, 1, 1441828, 65536, 1, 1441829, 131072, 1, 1441830, 0, 1, 1441831, 65536, 1, 1441832, 131072, 1, 1441833, 0, 1, 1441834, 65536, 1, 1441835, 0, 1, 1441836, 65536, 1, 1441837, 131072, 1, 1507364, 65536, 1, 1507365, 131072, 1, 1507366, 0, 1, 1507367, 65536, 1, 1507368, 131072, 1, 1507369, 0, 1, 1507370, 65536, 1, 1507371, 0, 1, 1507372, 65536, 1, 1507373, 131072, 1, 1703962, 65536, 1, 1703963, 131072, 1, 1703964, 0, 1, 1703965, 65536, 1, 1703966, 131072, 1, 1703967, 0, 1, 1703968, 65536, 1, 1703969, 131072, 1, 1703970, 0, 1, 1703971, 65536, 1, 1703972, 131072, 1, 1703973, 0, 1, 1703974, 65536, 1, 1703975, 131072, 1, 1703976, 0, 1, 1703977, 65536, 1, 1703978, 131072, 1, 1703979, 0, 1, 1703980, 65536, 1, 1703981, 131072, 1, 1703982, 65539, 2, 1703983, 65539, 2, 1441822, 131072, 1, 1507358, 131072, 1, 1507353, 0, 1, 1507354, 65536, 1, 1572889, 0, 1, 1572890, 65536, 1, 1441817, 0, 1, 1441818, 65536, 1, 1572894, 131072, 1, 917529, 0, 1, 917530, 65536, 1, 983065, 0, 1, 983066, 65536, 1, 1048601, 0, 1, 1048602, 65536, 1, 1114137, 0, 1, 1114138, 65536, 1, 1310745, 0, 1, 1310746, 65536, 1, 786478, 65536, 1, 786479, 131072, 1, 852014, 131072, 1, 852015, 131072, 1, 917550, 131072, 1, 917551, 131072, 1, 983086, 65536, 1, 983087, 131072, 1, 1048622, 65536, 1, 1048623, 131072, 1, 1114158, 65536, 1, 1114159, 131072, 1, 1703961, 0, 1)
+script = ExtResource("22_gv5jk")
+
+[node name="background2" type="AnimatedSprite2D" parent="."]
+position = Vector2(840, 384)
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("13_qljbc")
+animation = &"idle"
+centered = false
+script = ExtResource("6_fu8am")
+sprite_name = "background"
+
+[node name="Tilemap2" type="TileMap" parent="."]
+position = Vector2(840, 384)
+tile_set = ExtResource("20_jwy78")
+format = 2
+layer_0/tile_data = PackedInt32Array(1441819, 3, 1, 1507355, 3, 2, 1572891, 3, 3, 1441820, 65539, 1, 1507356, 65539, 2, 1572892, 65539, 3, 1441821, 131075, 1, 1507357, 131075, 2, 1572893, 131075, 3, 1441823, 3, 1, 1507359, 3, 2, 1572895, 3, 3, 1441824, 65539, 1, 1507360, 65539, 2, 1572896, 65539, 3, 1441825, 131075, 1, 1507361, 131075, 2, 1572897, 131075, 3, 1376291, 3, 1, 1376292, 65539, 1, 1376293, 65539, 1, 1376294, 65539, 1, 1376295, 65539, 1, 1376296, 65539, 1, 1376297, 65539, 1, 1376298, 65539, 1, 1376299, 65539, 1, 1376300, 65539, 1, 1376301, 65539, 1, 1441827, 3, 2, 1507363, 3, 2, 1572899, 3, 2, 1310747, 131075, 3, 1245211, 196611, 1, 1245212, 65539, 3, 1245213, 131075, 3, 917548, 3, 3, 983085, 3, 2, 917549, 262147, 1, 852013, 262147, 2, 852012, 3, 1, 786477, 3, 2, 1048621, 3, 2, 1114157, 3, 3, 1441828, 65539, 2, 1441829, 65539, 2, 1441830, 65539, 2, 1441831, 65539, 2, 1441832, 65539, 2, 1441833, 65539, 2, 1441834, 65539, 2, 1441835, 65539, 2, 1441836, 65539, 2, 1441837, 65539, 2, 1507364, 65539, 2, 1507365, 65539, 2, 1507366, 65539, 2, 1507367, 65539, 2, 1507368, 65539, 2, 1507369, 65539, 2, 1507370, 65539, 2, 1507371, 65539, 2, 1507372, 65539, 2, 1507373, 65539, 2, 1703962, 65539, 2, 1703963, 65539, 2, 1703964, 65539, 2, 1703965, 65539, 2, 1703966, 65539, 2, 1703967, 65539, 2, 1703968, 65539, 2, 1703969, 65539, 2, 1703970, 65539, 2, 1703971, 65539, 2, 1703972, 65539, 2, 1703973, 65539, 2, 1703974, 65539, 2, 1703975, 65539, 2, 1703976, 65539, 2, 1703977, 65539, 2, 1703978, 65539, 2, 1703979, 65539, 2, 1703980, 65539, 2, 1703981, 65539, 2, 1703982, 65539, 2, 1703983, 65539, 2, 262142, 65536, 1, 262143, 65536, 1, 196608, 65536, 1, 196609, 65536, 1, 196610, 65536, 1, 196611, 65536, 1, 196612, 65536, 1, 4, 0, 2, 65540, 0, 2, 131076, 0, 2)
 script = ExtResource("22_gv5jk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(640, 288)
-zoom = Vector2(3, 3)
+position = Vector2(912, 480)
 limit_smoothed = true
 script = ExtResource("20_ljdcj")
 
@@ -194,7 +213,7 @@ text = "DevTool"
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 312.0
+offset_right = 408.0
 offset_bottom = 88.0
 theme = ExtResource("2_d2ujk")
 
@@ -210,7 +229,7 @@ text = "X"
 layout_mode = 0
 offset_left = 8.0
 offset_top = 24.0
-offset_right = 296.0
+offset_right = 392.0
 offset_bottom = 44.0
 theme = ExtResource("2_d2ujk")
 metadata/_edit_group_ = true
@@ -579,6 +598,16 @@ text = "x 999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Player2" parent="." instance=ExtResource("3_jxqyn")]
+position = Vector2(988, 304)
+script = ExtResource("26_rwbyh")
+
+[node name="PlayerSprite" parent="Player2" index="0"]
+scale = Vector2(3, 3)
+
+[node name="Collision" parent="Player2" index="1"]
+shape = SubResource("RectangleShape2D_p2hwq")
+
 [connection signal="pressed" from="CanvasLayer/Interface/DevMenu/DevTool" to="CanvasLayer/Interface/DevMenu" method="_on_dev_tool_pressed"]
 [connection signal="pressed" from="CanvasLayer/Interface/DevMenu/DevToolPanel/DevToolClose" to="CanvasLayer/Interface/DevMenu" method="_on_dev_tool_close_pressed"]
 [connection signal="item_selected" from="CanvasLayer/Interface/DevMenu/DevToolPanel/AssetPackCon/AssetPackSelector" to="CanvasLayer/Interface/DevMenu" method="_on_asset_pack_selector_item_selected"]
@@ -587,3 +616,5 @@ vertical_alignment = 1
 [connection signal="item_selected" from="CanvasLayer/Interface/DevMenu/DevToolPanel/SettingsPanel/Anims/AnimationsList" to="CanvasLayer/Interface/DevMenu/DevToolPanel/SettingsPanel" method="_on_animations_list_item_selected"]
 [connection signal="value_changed" from="CanvasLayer/Interface/DevMenu/DevToolPanel/SettingsPanel/AnimData/FPS/FPSSpin" to="CanvasLayer/Interface/DevMenu/DevToolPanel/SettingsPanel" method="_on_fps_spin_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Interface/DevMenu/DevToolPanel/SettingsPanel/Save" to="CanvasLayer/Interface/DevMenu/DevToolPanel/SettingsPanel" method="_on_save_pressed"]
+
+[editable path="Player2"]

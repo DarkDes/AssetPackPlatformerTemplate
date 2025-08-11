@@ -1,0 +1,17 @@
+[gd_resource type="SpriteFrames" script_class="SpriteFramesAsset" load_steps=3 format=3 uid="uid://b7on802l8lji3"]
+
+[ext_resource type="Texture2D" uid="uid://drsnidq8wia55" path="res://Sprites/Defaults/background.png" id="1_0n7ac"]
+[ext_resource type="Script" path="res://AssetPack/SpriteFramesAsset.gd" id="2_c8qo3"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0n7ac")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+script = ExtResource("2_c8qo3")
+pixelated = false

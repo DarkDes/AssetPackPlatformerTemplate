@@ -1,12 +1,13 @@
-[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://dtq7yttb4sh8v"]
+[gd_resource type="SpriteFrames" script_class="SpriteFramesAsset" load_steps=3 format=3 uid="uid://dtq7yttb4sh8v"]
 
-[ext_resource type="Texture2D" uid="uid://e8gxocafhusc" path="res://Sprites/player_idle_0.png" id="1_kmnvx"]
+[ext_resource type="Texture2D" uid="uid://e8gxocafhusc" path="res://Sprites/Defaults/player_idle_0.png" id="1_hhm8x"]
+[ext_resource type="Script" path="res://AssetPack/SpriteFramesAsset.gd" id="2_sn68l"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_kmnvx")
+"texture": ExtResource("1_hhm8x")
 }],
 "loop": true,
 "name": &"action",
@@ -14,7 +15,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_kmnvx")
+"texture": ExtResource("1_hhm8x")
 }],
 "loop": true,
 "name": &"fall",
@@ -22,7 +23,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_kmnvx")
+"texture": ExtResource("1_hhm8x")
 }],
 "loop": true,
 "name": &"idle",
@@ -30,7 +31,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_kmnvx")
+"texture": ExtResource("1_hhm8x")
 }],
 "loop": true,
 "name": &"jump",
@@ -38,9 +39,11 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_kmnvx")
+"texture": ExtResource("1_hhm8x")
 }],
 "loop": true,
 "name": &"move",
 "speed": 5.0
 }]
+script = ExtResource("2_sn68l")
+pixelated = false
