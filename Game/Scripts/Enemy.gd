@@ -80,7 +80,7 @@ func take_damage():
 	print("Enemy damage")
 	
 func _on_head_hit(body):
-	if body.is_in_group("player") and body.velocity.y > 0:
+	if body.is_in_group("player") and body.velocity.y > -0.1:
 		take_damage()
 		body.velocity.y = -300
 	

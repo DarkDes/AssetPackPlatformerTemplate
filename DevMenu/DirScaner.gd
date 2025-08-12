@@ -10,6 +10,22 @@ func _ready():
 	if FileAccess.file_exists(ASSET_DIR) == false:
 		ASSET_DIR = "res://Assets"
 
+func make_asset_directory(author, asset_name):
+	var asset_path = ASSET_DIR.path_join(author).path_join(asset_name)
+	DirAccess.make_dir_recursive_absolute(asset_path)
+	var file = FileAccess.open(asset_path.path_join(SETTINGS_FILE), FileAccess.WRITE)
+	file.store_string("{}")
+	file.close()
+	
+	var data = AssetPackData.new()
+	data.path 			= asset_path
+	data.author_name	= author
+	data.display_name	= asset_name
+	data.settings_data  = {}
+	
+	# Add to Asset Master
+	APM.assets_data.append( data )
+	
 ## 
 ## 
 ## 

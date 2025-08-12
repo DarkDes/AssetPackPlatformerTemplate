@@ -1,7 +1,17 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://camj2h6115iy2"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://camj2h6115iy2"]
 
 [ext_resource type="FontFile" uid="uid://gtlgpdlte8h2" path="res://PressStart2P-Regular.ttf" id="1_uobjl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhh34"]
+bg_color = Color(0.6, 0.6, 0.6, 0.627451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
 
 [resource]
 default_font = ExtResource("1_uobjl")
 default_font_size = 8
+Panel/styles/panel = SubResource("StyleBoxFlat_bhh34")

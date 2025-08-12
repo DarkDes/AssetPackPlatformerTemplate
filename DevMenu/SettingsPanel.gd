@@ -5,16 +5,22 @@ const K_SPRITES = "sprites"
 const K_ANIMATIONS = "animations"
 const K_FPS = "fps"
 
+@onready var asset_pack_selector = $"../AssetPackCon/AssetPackSelector"
+@onready var add_new_asset_pack = $"../AddNewAssetPack"
+
+
 @onready var asset_name = $AssetName
 @onready var assetpack_name_edit = $Grid/AssetpackNameEdit
 @onready var nickname_edit = $Grid/NicknameEdit
 @onready var sprites_list = $Sprites/SpritesList
 @onready var animations_list = $Anims/AnimationsList
 
+
 @onready var pixel_art : CheckBox = $Main/PixelArt
 @onready var ui_lives_selector : OptionButton = $Main/UILives/Selector
 @onready var ui_coins_selector : OptionButton = $Main/UICoins/Selector
 @onready var deafult_fps_spin = $Main/DefaultFPS/FPSSpin
+@onready var scale_spin = $Main/SpriteScale/ScaleSpin
 
 @onready var fps_spin = $AnimData/FPS/FPSSpin
 @onready var delete_button = $AnimData/Delete
@@ -42,10 +48,13 @@ func setup():
 	ui_lives_selector.text = asset_data.get_setting("ui_lives_method", "NUMBERS")
 	ui_coins_selector.text = asset_data.get_setting("ui_coins_method", "NUMBERS")
 	deafult_fps_spin.value = asset_data.get_setting("default_fps", 5)
+	scale_spin.value = asset_data.get_setting("sprite_scale", 1)
 	
 	pixel_art.toggled.connect(
 		func():
-			asset_data.set_setting("pixel_art", pixel_art.button_pressed) )
+			asset_data.set_setting("pixel_art", pixel_art.button_pressed)
+			APM.apply_to_all()
+	)
 	ui_lives_selector.item_selected.connect(
 		func(index):
 			asset_data.set_setting("ui_lives_method", ui_lives_selector.get_item_text(index)) )
@@ -55,6 +64,12 @@ func setup():
 	deafult_fps_spin.value_changed.connect(
 		func(value):
 			asset_data.set_setting("default_fps", value))
+	
+	scale_spin.value_changed.connect(
+		func(value):
+			asset_data.set_setting("sprite_scale", value)
+			APM.apply_to_all()
+	)
 	
 	# По всем спрайтам
 	sprites_list.clear();
@@ -85,7 +100,8 @@ func _on_edit_asset_pack_pressed():
 	visible = !visible
 	if visible:
 		setup()
-
+	asset_pack_selector.disabled = visible
+	add_new_asset_pack.disabled = visible
 
 func _on_delete_button_pressed():
 	asset_data.settings_data.erase(get_current_sprite_animation_key(K_FPS))

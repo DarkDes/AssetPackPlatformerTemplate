@@ -19,6 +19,11 @@ signal textures_changed(data)
 		texture = value
 		send_updated()
 
+@export var sprite_scale : float = 3 :
+	set(value):
+		sprite_scale = value
+		send_updated()
+
 func default():
 	for anim in get_animation_names():
 		clear(anim)

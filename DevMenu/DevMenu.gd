@@ -5,6 +5,7 @@ extends Control
 @onready var asset_pack_selector = $DevToolPanel/AssetPackCon/AssetPackSelector
 @onready var settings_panel = $DevToolPanel/SettingsPanel
 
+@onready var create_new_asset_pack_panel = $CreateNewAssetPackPanel
 
 @onready var dir_scaner = $DirScaner
 
@@ -14,7 +15,13 @@ func _ready():
 	dev_tool_panel.visible = false;
 	dev_tool_button.visible = true;
 	settings_panel.visible = false;
+	create_new_asset_pack_panel.visible = false
 	
+	rescan_and_build_selector()
+	select_first_asset_pack()
+	
+	
+func rescan_and_build_selector():
 	dir_scaner.scan_asset_directory();
 	var index = 0;
 	for n in APM.assets_data:
@@ -23,14 +30,23 @@ func _ready():
 		asset_pack_selector.set_item_metadata(index, n)
 		index += 1
 	
+func select_first_asset_pack():
 	# Выбрать самый первый ассет пак
-	if index > 0:
+	if asset_pack_selector.item_count > 0:
 		var asset_data = asset_pack_selector.get_item_metadata(0)
 		APM.current = asset_data;
 		apply_assetpack(asset_data)
 	else:
 		push_error("DEV MENU: NO ASSETS")
-		
+
+func select_asset_pack(name):
+	for i in asset_pack_selector.item_count:
+		if asset_pack_selector.get_item_text(i) == name:
+			asset_pack_selector.select(i)
+			return
+	asset_pack_selector.select(0)
+
+
 func _on_dev_tool_pressed():
 	dev_tool_panel.visible = true;
 	dev_tool_button.visible = false;
@@ -73,8 +89,8 @@ func apply_assetpack(assetpack_data):
 
 func apply_sprite_from_assetpack(sprite_name, sprite_data, assetpack_data):
 	var sframes : SpriteFramesAsset = APM.get_sprite(sprite_name)
-	sframes.pixelated = assetpack_data.get_setting("pixel_art", false, false)
-
+	
+	
 	for anim in sframes.get_animation_names():
 		var sprite_path = sprite_name + "_"
 		if "animations" in sprite_data: 
@@ -95,17 +111,21 @@ func apply_sprite_from_assetpack(sprite_name, sprite_data, assetpack_data):
 				assetpack_data.get_setting("default_fps", 5))
 			sframes.set_animation_speed(anim, fps)
 			
-			var max_size = Vector2(1,1)
 			sframes.clear(anim);
 			for i in frames_count:
 				var _path = sprite_path + str(i) + ".png"
 				var _image = Image.load_from_file(_path)
 				var _texture = ImageTexture.create_from_image(_image)
-				
-				max_size.x = max(max_size.x, _image.get_size().x)
-				max_size.y = max(max_size.y, _image.get_size().y)
-				
-				push_warning(_path, _image, _texture)
+				#var _size = _image.get_size()
+				#var _def_size = APM.sprite_def[sprite_name]["base_size"]
+				#sframes.sprite_scale = 3 * (_def_size.x / _size.x) # ex. 32, 96
+				#push_warning(_path, _image, _texture)
 				sframes.add_frame(anim, _texture)
 			sframes.send_updated()
-			
+	sframes.pixelated = assetpack_data.get_setting("pixel_art", false, false)
+	sframes.sprite_scale = assetpack_data.get_setting("sprite_scale", 1, false) # ex. 32, 96
+
+
+func _on_add_new_asset_pack_pressed():
+	create_new_asset_pack_panel.visible = true
+	get_tree().paused = true

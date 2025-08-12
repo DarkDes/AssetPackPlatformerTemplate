@@ -1,13 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://buuspdsqrknt2"]
+[gd_scene load_steps=8 format=3 uid="uid://buuspdsqrknt2"]
 
 [ext_resource type="Theme" uid="uid://camj2h6115iy2" path="res://DevMenu/ui_devmenu_theme.tres" id="1_opjtk"]
 [ext_resource type="Script" path="res://DevMenu/DevMenu.gd" id="2_o631x"]
 [ext_resource type="Script" path="res://DevMenu/DirScaner.gd" id="3_qd4tp"]
 [ext_resource type="Shortcut" uid="uid://cgcruitxegn2a" path="res://DevMenu/shortcut_open_devtool.tres" id="4_60y6m"]
 [ext_resource type="Script" path="res://DevMenu/SettingsPanel.gd" id="5_je2ww"]
+[ext_resource type="Script" path="res://DevMenu/CreateNewAssetPackPanel.gd" id="6_h60s4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hqr5r"]
-font_color = Color(0.466181, 0.466181, 0.466181, 1)
+font_color = Color(1, 1, 0.52549, 1)
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="DevMenu" type="Control"]
 layout_mode = 3
@@ -78,9 +80,9 @@ text = "Edit"
 
 [node name="AddNewAssetPack" type="Button" parent="DevToolPanel"]
 layout_mode = 0
-offset_left = 184.0
+offset_left = 280.0
 offset_top = 56.0
-offset_right = 296.0
+offset_right = 392.0
 offset_bottom = 72.0
 theme = ExtResource("1_opjtk")
 text = "Add New"
@@ -97,12 +99,13 @@ script = ExtResource("5_je2ww")
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 496.0
+offset_right = 392.0
 offset_bottom = 24.0
 theme = ExtResource("1_opjtk")
-text = "Asset name--------"
+text = "Asset name--------------||"
 label_settings = SubResource("LabelSettings_hqr5r")
 vertical_alignment = 1
+clip_text = true
 
 [node name="Main" type="Panel" parent="DevToolPanel/SettingsPanel"]
 layout_mode = 0
@@ -127,9 +130,11 @@ offset_left = 8.0
 offset_top = 32.0
 offset_right = 241.0
 offset_bottom = 52.0
+theme = ExtResource("1_opjtk")
 
 [node name="Label" type="Label" parent="DevToolPanel/SettingsPanel/Main/UILives"]
 layout_mode = 2
+theme = ExtResource("1_opjtk")
 text = "UI Lives Display"
 
 [node name="Selector" type="OptionButton" parent="DevToolPanel/SettingsPanel/Main/UILives"]
@@ -151,6 +156,7 @@ offset_right = 376.0
 offset_bottom = 32.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("1_opjtk")
 metadata/_edit_group_ = true
 
 [node name="Label2" type="Label" parent="DevToolPanel/SettingsPanel/Main/DefaultFPS"]
@@ -168,15 +174,44 @@ value = 5.0
 allow_greater = true
 alignment = 1
 
+[node name="SpriteScale" type="HBoxContainer" parent="DevToolPanel/SettingsPanel/Main"]
+layout_mode = 2
+offset_left = 248.0
+offset_top = 40.0
+offset_right = 376.0
+offset_bottom = 59.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_opjtk")
+metadata/_edit_group_ = true
+
+[node name="Label2" type="Label" parent="DevToolPanel/SettingsPanel/Main/SpriteScale"]
+layout_mode = 2
+theme = ExtResource("1_opjtk")
+text = "Sprite
+Scale"
+vertical_alignment = 1
+
+[node name="ScaleSpin" type="SpinBox" parent="DevToolPanel/SettingsPanel/Main/SpriteScale"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_opjtk")
+min_value = 1.0
+max_value = 3.0
+value = 1.0
+alignment = 1
+
 [node name="UICoins" type="HBoxContainer" parent="DevToolPanel/SettingsPanel/Main"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 56.0
 offset_right = 241.0
 offset_bottom = 76.0
+theme = ExtResource("1_opjtk")
 
 [node name="Label" type="Label" parent="DevToolPanel/SettingsPanel/Main/UICoins"]
 layout_mode = 2
+theme = ExtResource("1_opjtk")
 text = "UI Coins Display"
 
 [node name="Selector" type="OptionButton" parent="DevToolPanel/SettingsPanel/Main/UICoins"]
@@ -242,6 +277,7 @@ vertical_alignment = 1
 [node name="SpritesList" type="ItemList" parent="DevToolPanel/SettingsPanel/Sprites"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("1_opjtk")
 item_count = 3
 item_0/text = "1"
 item_1/text = "2"
@@ -265,6 +301,7 @@ vertical_alignment = 1
 [node name="AnimationsList" type="ItemList" parent="DevToolPanel/SettingsPanel/Anims"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("1_opjtk")
 
 [node name="AnimData" type="Panel" parent="DevToolPanel/SettingsPanel"]
 layout_mode = 0
@@ -282,6 +319,7 @@ offset_right = 192.0
 offset_bottom = 24.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("1_opjtk")
 metadata/_edit_group_ = true
 
 [node name="Label2" type="Label" parent="DevToolPanel/SettingsPanel/AnimData/FPS"]
@@ -304,6 +342,7 @@ offset_left = 8.0
 offset_top = 32.0
 offset_right = 184.0
 offset_bottom = 48.0
+theme = ExtResource("1_opjtk")
 disabled = true
 text = "Delete data"
 
@@ -321,10 +360,110 @@ grow_vertical = 0
 theme = ExtResource("1_opjtk")
 text = "Save"
 
+[node name="CreateNewAssetPackPanel" type="Panel" parent="."]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -80.0
+offset_right = 216.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_h60s4")
+
+[node name="AssetName" type="Label" parent="CreateNewAssetPackPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = 16.0
+offset_right = 192.0
+offset_bottom = 32.0
+grow_horizontal = 2
+theme = ExtResource("1_opjtk")
+text = "New Asset Pack"
+label_settings = SubResource("LabelSettings_hqr5r")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Grid" type="GridContainer" parent="CreateNewAssetPackPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 40.0
+offset_right = 200.0
+offset_bottom = 76.0
+grow_horizontal = 2
+theme = ExtResource("1_opjtk")
+columns = 2
+metadata/_edit_group_ = true
+
+[node name="Label2" type="Label" parent="CreateNewAssetPackPanel/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_opjtk")
+text = "Author folder"
+
+[node name="NicknameEdit" type="LineEdit" parent="CreateNewAssetPackPanel/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_opjtk")
+placeholder_text = "Nickname"
+
+[node name="Label" type="Label" parent="CreateNewAssetPackPanel/Grid"]
+layout_mode = 2
+theme = ExtResource("1_opjtk")
+text = "Asset folder"
+
+[node name="AssetpackNameEdit" type="LineEdit" parent="CreateNewAssetPackPanel/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_opjtk")
+placeholder_text = "Asset Pack Name"
+
+[node name="Create" type="Button" parent="CreateNewAssetPackPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -24.0
+offset_right = 208.0
+offset_bottom = -8.0
+grow_vertical = 0
+theme = ExtResource("1_opjtk")
+text = "Create"
+
+[node name="Cancel" type="Button" parent="CreateNewAssetPackPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = -24.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_opjtk")
+text = "Cancel"
+
 [connection signal="pressed" from="DevTool" to="." method="_on_dev_tool_pressed"]
 [connection signal="pressed" from="DevToolPanel/DevToolClose" to="." method="_on_dev_tool_close_pressed"]
 [connection signal="item_selected" from="DevToolPanel/AssetPackCon/AssetPackSelector" to="." method="_on_asset_pack_selector_item_selected"]
 [connection signal="pressed" from="DevToolPanel/EditAssetPack" to="DevToolPanel/SettingsPanel" method="_on_edit_asset_pack_pressed"]
+[connection signal="pressed" from="DevToolPanel/AddNewAssetPack" to="." method="_on_add_new_asset_pack_pressed"]
 [connection signal="item_selected" from="DevToolPanel/SettingsPanel/Sprites/SpritesList" to="DevToolPanel/SettingsPanel" method="_on_sprites_lits_item_selected"]
 [connection signal="item_selected" from="DevToolPanel/SettingsPanel/Anims/AnimationsList" to="DevToolPanel/SettingsPanel" method="_on_animations_list_item_selected"]
 [connection signal="value_changed" from="DevToolPanel/SettingsPanel/AnimData/FPS/FPSSpin" to="DevToolPanel/SettingsPanel" method="_on_fps_spin_value_changed"]

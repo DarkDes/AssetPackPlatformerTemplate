@@ -11,24 +11,24 @@ var current : AssetPackData = null :
 
 @export var assets_data : Array[AssetPackData] = []
 @export var sprite_def  = {
-		"player": { "animations": [ "idle", "move", "jump", "fall", "action", ] },
-		"coin": {},
-		"enemy": { "animations": [ "move", "dying" ] },
-		"danger": {},
+		"player": { "animations": [ "idle", "move", "jump", "fall", "action", ], "base_size": Vector2(32,32) },
+		"coin": { "base_size": Vector2(16,16), },
+		"enemy": { "animations": [ "move", "dying" ], "base_size": Vector2(32,32), },
+		"danger": { "base_size": Vector2(32,16), },
 		#"tileset": {},
-		"platform_static": {},
-		"platform_move": {},
-		"flag": {},
-		"background": {},
-		"background_parallax": {},
-		"decoration_small": {},
-		"decoration_mid": {},
-		"decoration_big": {},
-		"ui_live": {},
-		"ui_coin": {},
+		"platform_static": { "base_size": Vector2(48,16), },
+		"platform_move": { "base_size": Vector2(48,16), },
+		"flag": { "base_size": Vector2(32,32), },
+		"background": { "base_size": Vector2(320,180), },
+		"background_parallax": { "base_size": Vector2(320,180), },
+		"decoration_small": { "base_size": Vector2(16,16), },
+		"decoration_mid": { "base_size": Vector2(32,32), },
+		"decoration_big": { "base_size": Vector2(48,48), },
+		"ui_live": { "base_size": Vector2(16,16), },
+		"ui_coin": { "base_size": Vector2(16,16), },
 	}
 
-var sprites : Dictionary = {}
+var sprites : Dictionary = {} # [SpriteFramesAsset]
 var tilemaps : Array[TileMap] = []
 var tilesets : Array[TileSetAsset] = []
 
@@ -59,9 +59,11 @@ func add_tilemap(tilemap):
 	tilemaps.append(tilemap)
 
 func apply_to_all():
-	var _pixelart = current.get_setting("pixel_art", false, false)
-	for sprite in sprites:
-		print(sprite)
+	var _pixelart 		= current.get_setting("pixel_art", false, false)
+	var _spritescale 	= current.get_setting("sprite_scale", 1, false)
+	for sprite_name in sprites:
+		sprites[sprite_name].pixelated 		= _pixelart
+		sprites[sprite_name].sprite_scale 	= _spritescale
 		
 	for tilemap in tilemaps:
 		if _pixelart:

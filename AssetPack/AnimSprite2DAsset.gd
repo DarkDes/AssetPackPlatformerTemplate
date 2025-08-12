@@ -30,3 +30,4 @@ func on_sprite_frames_textures_changed(sprite_frames_asset : SpriteFramesAsset):
 		texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	else:
 		texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	scale = Vector2(sprite_frames_asset.sprite_scale,sprite_frames_asset.sprite_scale)

@@ -20,6 +20,7 @@ size = Vector2(80, 16)
 size = Vector2(80, 88)
 
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_53ix0")
 
 [node name="Node2DSnapping" type="Node2D" parent="."]
@@ -50,7 +51,7 @@ debug_color = Color(0.96668, 0, 0.47902, 0.42)
 [node name="HeadHitbox" type="Area2D" parent="."]
 
 [node name="Shape" type="CollisionShape2D" parent="HeadHitbox"]
-position = Vector2(0, -88)
+position = Vector2(0, -96)
 shape = SubResource("RectangleShape2D_dbqvi")
 debug_color = Color(0.567382, 0.548967, 0.2732, 0.42)
 
