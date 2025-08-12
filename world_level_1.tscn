@@ -1,19 +1,55 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpagqsfi3oiha"]
+[gd_scene load_steps=18 format=3 uid="uid://dpagqsfi3oiha"]
 
 [ext_resource type="PackedScene" uid="uid://d3tibanldaq15" path="res://Game/player.tscn" id="1_crrwq"]
+[ext_resource type="Script" path="res://Game/Scripts/Level.gd" id="1_kyx4o"]
+[ext_resource type="SpriteFrames" uid="uid://b7on802l8lji3" path="res://Sprites/s_background.tres" id="2_e256b"]
 [ext_resource type="TileSet" uid="uid://c60p71ipbiuek" path="res://Tilemap/tileset_x3.tres" id="2_gjo2t"]
-[ext_resource type="Script" path="res://Game/PlayerX3.gd" id="2_owsdn"]
 [ext_resource type="Script" path="res://Tilemap.gd" id="3_0uo6m"]
+[ext_resource type="Script" path="res://AssetPack/AnimSprite2DAsset.gd" id="3_2jy0a"]
 [ext_resource type="TileSet" uid="uid://e68a7xtwxt8q" path="res://Tilemap/tileset_object.tres" id="4_2f53n"]
+[ext_resource type="SpriteFrames" uid="uid://4xbo2t8q82td" path="res://Sprites/s_background_parallax.tres" id="4_yqygp"]
+[ext_resource type="Script" path="res://Game/Scripts/PlatformCamera.gd" id="6_hmb1l"]
+[ext_resource type="PackedScene" uid="uid://d0m3gl6bmfn6k" path="res://Game/enemy.tscn" id="10_mmdd5"]
+[ext_resource type="PackedScene" uid="uid://cjoshielvkwm8" path="res://Game/decoration_small.tscn" id="13_7ncn1"]
+[ext_resource type="PackedScene" uid="uid://ylfcymdidelr" path="res://Game/decoration_mid.tscn" id="14_ipvvk"]
+[ext_resource type="PackedScene" uid="uid://cofjptac1pe44" path="res://Game/platform_static.tscn" id="15_brn5u"]
+[ext_resource type="PackedScene" uid="uid://ifahi3nfmveb" path="res://Game/decoration_big.tscn" id="15_sormp"]
+[ext_resource type="PackedScene" uid="uid://oh2yypn78p1e" path="res://Game/platform_move.tscn" id="16_pkvn8"]
+[ext_resource type="PackedScene" uid="uid://dooqcmy5xdsbt" path="res://Game/flag.tscn" id="17_4j137"]
+[ext_resource type="PackedScene" uid="uid://vjhjlnehaax4" path="res://Game/hud.tscn" id="18_dhif0"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_kyx4o")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="background" type="AnimatedSprite2D" parent="ParallaxBackground/Background"]
+position = Vector2(-480, -272)
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("2_e256b")
+animation = &"idle"
+centered = false
+script = ExtResource("3_2jy0a")
+sprite_name = "background"
+
+[node name="Parallax" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(2, 2)
+
+[node name="background_parallax" type="AnimatedSprite2D" parent="ParallaxBackground/Parallax"]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("4_yqygp")
+animation = &"idle"
+script = ExtResource("3_2jy0a")
+sprite_name = "background_parallax"
 
 [node name="Player" parent="." instance=ExtResource("1_crrwq")]
 
-[node name="Node2DSnapping" type="Node2D" parent="."]
-script = ExtResource("2_owsdn")
-
-[node name="Camera2D" type="Camera2D" parent="Node2DSnapping"]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("6_hmb1l")
+target = NodePath("../Player")
 
 [node name="TileMapAsset" type="TileMap" parent="."]
 tile_set = ExtResource("2_gjo2t")
@@ -24,4 +60,26 @@ script = ExtResource("3_0uo6m")
 [node name="TileMapObjects" type="TileMap" parent="."]
 tile_set = ExtResource("4_2f53n")
 format = 2
-layer_0/tile_data = PackedInt32Array(131062, 1, 65536, 131063, 1, 65536, 131064, 1, 65536, 131065, 1, 65536, 131067, 1, 65536, 131068, 1, 65536, 131066, 1, 65536, 131077, 1, 65536, 65542, 1, 65536, 7, 1, 65536, -65528, 1, 65536, 262142, 1, 131072)
+layer_0/tile_data = PackedInt32Array(131062, 1, 65536, 131063, 1, 65536, 131064, 1, 65536, 131065, 1, 65536, 131067, 1, 65536, 131068, 1, 65536, 131066, 1, 65536, 131077, 1, 65536, 65542, 1, 65536, 7, 1, 65536, -65528, 1, 65536, 262142, 1, 131072, -262135, 1, 196608, -327675, 1, 262144, -327677, 1, 327680, -327679, 1, 393216)
+
+[node name="Enemy" parent="." instance=ExtResource("10_mmdd5")]
+position = Vector2(264, 16)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("18_dhif0")]
+
+[node name="PlatformStatic" parent="." instance=ExtResource("15_brn5u")]
+position = Vector2(16, 40)
+
+[node name="PlatformMove" parent="." instance=ExtResource("16_pkvn8")]
+position = Vector2(-192, -232)
+
+[node name="Decoration_Small" parent="." instance=ExtResource("13_7ncn1")]
+
+[node name="Decoration_Mid" parent="." instance=ExtResource("14_ipvvk")]
+
+[node name="Decoration_Big" parent="." instance=ExtResource("15_sormp")]
+
+[node name="Flag" parent="." instance=ExtResource("17_4j137")]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cofjptac1pe44"]
+
+[ext_resource type="Script" path="res://Game/Scripts/PlayerX3.gd" id="1_iofk5"]
+[ext_resource type="SpriteFrames" uid="uid://d0sx1kw0eethl" path="res://Sprites/s_platform_static.tres" id="2_qli3p"]
+[ext_resource type="Script" path="res://AssetPack/AnimSprite2DAsset.gd" id="3_mxkcp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83yjj"]
+size = Vector2(144, 48)
+
+[node name="PlatformStatic" type="StaticBody2D"]
+
+[node name="Snapping" type="Node2D" parent="."]
+script = ExtResource("1_iofk5")
+
+[node name="platform_static" type="AnimatedSprite2D" parent="Snapping"]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("2_qli3p")
+animation = &"idle"
+script = ExtResource("3_mxkcp")
+sprite_name = "platform_static"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_83yjj")

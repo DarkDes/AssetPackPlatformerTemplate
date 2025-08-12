@@ -1,11 +1,25 @@
-[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://e68a7xtwxt8q"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://e68a7xtwxt8q"]
 
 [ext_resource type="PackedScene" uid="uid://l1iatj037t3y" path="res://Game/coin.tscn" id="1_ey0f5"]
 [ext_resource type="PackedScene" uid="uid://v2syfmr6gim6" path="res://Game/danger.tscn" id="2_r0oyb"]
+[ext_resource type="PackedScene" uid="uid://ifahi3nfmveb" path="res://Game/decoration_big.tscn" id="3_gs0q4"]
+[ext_resource type="PackedScene" uid="uid://ylfcymdidelr" path="res://Game/decoration_mid.tscn" id="4_xy1ym"]
+[ext_resource type="PackedScene" uid="uid://cjoshielvkwm8" path="res://Game/decoration_small.tscn" id="5_jm5ye"]
+[ext_resource type="PackedScene" uid="uid://d0m3gl6bmfn6k" path="res://Game/enemy.tscn" id="6_p1wu1"]
+[ext_resource type="PackedScene" uid="uid://oh2yypn78p1e" path="res://Game/platform_move.tscn" id="7_oscua"]
+[ext_resource type="PackedScene" uid="uid://cofjptac1pe44" path="res://Game/platform_static.tscn" id="8_bcuxh"]
+[ext_resource type="PackedScene" uid="uid://dooqcmy5xdsbt" path="res://Game/flag.tscn" id="9_qm8wq"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_2jjvc"]
 scenes/1/scene = ExtResource("1_ey0f5")
 scenes/2/scene = ExtResource("2_r0oyb")
+scenes/3/scene = ExtResource("3_gs0q4")
+scenes/4/scene = ExtResource("4_xy1ym")
+scenes/5/scene = ExtResource("5_jm5ye")
+scenes/6/scene = ExtResource("6_p1wu1")
+scenes/7/scene = ExtResource("7_oscua")
+scenes/8/scene = ExtResource("8_bcuxh")
+scenes/9/scene = ExtResource("9_qm8wq")
 
 [resource]
 tile_size = Vector2i(48, 48)

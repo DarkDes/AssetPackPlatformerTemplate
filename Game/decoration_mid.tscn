@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ylfcymdidelr"]
+
+[ext_resource type="Script" path="res://Game/Scripts/PlayerX3.gd" id="1_opddr"]
+[ext_resource type="SpriteFrames" uid="uid://dfkqady4xdfq8" path="res://Sprites/s_decoration_mid.tres" id="2_5fh7b"]
+[ext_resource type="Script" path="res://AssetPack/AnimSprite2DAsset.gd" id="3_bkphp"]
+
+[node name="Decoration_Mid" type="Node2D"]
+
+[node name="Node2DSnapping" type="Node2D" parent="."]
+position = Vector2(0, -48)
+script = ExtResource("1_opddr")
+
+[node name="decortaion_mid" type="AnimatedSprite2D" parent="Node2DSnapping"]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("2_5fh7b")
+animation = &"idle"
+script = ExtResource("3_bkphp")
+sprite_name = "decoration_mid"

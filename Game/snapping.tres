@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SnappingSetting" load_steps=2 format=3 uid="uid://bcpjlq28rur21"]
+
+[ext_resource type="Script" path="res://SnappingSetting.gd" id="1_fw2oj"]
+
+[resource]
+script = ExtResource("1_fw2oj")
+snapping_scale = 3
+snapping = true

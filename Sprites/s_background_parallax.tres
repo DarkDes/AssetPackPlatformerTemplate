@@ -1,13 +1,13 @@
 [gd_resource type="SpriteFrames" script_class="SpriteFramesAsset" load_steps=3 format=3 uid="uid://4xbo2t8q82td"]
 
-[ext_resource type="Texture2D" uid="uid://drsnidq8wia55" path="res://Sprites/Defaults/background.png" id="1_r3xa2"]
+[ext_resource type="Texture2D" uid="uid://cke1ytccux4mr" path="res://Sprites/Defaults/background_parallax_0.png" id="1_8qckj"]
 [ext_resource type="Script" path="res://AssetPack/SpriteFramesAsset.gd" id="2_j6qsq"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_r3xa2")
+"texture": ExtResource("1_8qckj")
 }],
 "loop": true,
 "name": &"idle",

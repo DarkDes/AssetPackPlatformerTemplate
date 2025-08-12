@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://d0m3gl6bmfn6k"]
+
+[ext_resource type="Script" path="res://Game/Scripts/Enemy.gd" id="1_53ix0"]
+[ext_resource type="SpriteFrames" uid="uid://c2qfrreuusi8w" path="res://Sprites/s_enemy.tres" id="2_agpve"]
+[ext_resource type="Script" path="res://Game/Scripts/PlayerX3.gd" id="2_u7wnc"]
+[ext_resource type="Script" path="res://AssetPack/AnimSprite2DAsset.gd" id="3_y7hmb"]
+[ext_resource type="Script" path="res://Game/Scripts/EnemyAI.gd" id="5_pukqt"]
+[ext_resource type="Script" path="res://Game/Scripts/Danger.gd" id="6_1tkmo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggekv"]
+size = Vector2(64, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7gp6e"]
+size = Vector2(80, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbqvi"]
+size = Vector2(80, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4ct3"]
+size = Vector2(80, 88)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_53ix0")
+
+[node name="Node2DSnapping" type="Node2D" parent="."]
+position = Vector2(0, -48)
+script = ExtResource("2_u7wnc")
+
+[node name="Enemy" type="AnimatedSprite2D" parent="Node2DSnapping"]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("2_agpve")
+animation = &"move"
+script = ExtResource("3_y7hmb")
+sprite_name = "enemy"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_ggekv")
+
+[node name="AI" type="Node" parent="."]
+script = ExtResource("5_pukqt")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -44)
+shape = SubResource("RectangleShape2D_7gp6e")
+debug_color = Color(0.96668, 0, 0.47902, 0.42)
+
+[node name="HeadHitbox" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="HeadHitbox"]
+position = Vector2(0, -88)
+shape = SubResource("RectangleShape2D_dbqvi")
+debug_color = Color(0.567382, 0.548967, 0.2732, 0.42)
+
+[node name="DangerArea" type="Area2D" parent="."]
+script = ExtResource("6_1tkmo")
+
+[node name="Shape" type="CollisionShape2D" parent="DangerArea"]
+position = Vector2(0, -44)
+shape = SubResource("RectangleShape2D_v4ct3")

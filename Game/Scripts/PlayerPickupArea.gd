@@ -12,5 +12,6 @@ func _on_area_entered(area):
 		if "pick_up" in area:
 			if area.pick_up(self):
 				picked_up.emit(self, area)
+		GD.coins += 1
 		area.queue_free()
 		

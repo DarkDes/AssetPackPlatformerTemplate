@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dooqcmy5xdsbt"]
+
+[ext_resource type="Script" path="res://Game/Scripts/Flag.gd" id="1_le02n"]
+[ext_resource type="Script" path="res://Game/Scripts/PlayerX3.gd" id="2_pu8w4"]
+[ext_resource type="SpriteFrames" uid="uid://b1ieprdw6omlf" path="res://Sprites/s_flag.tres" id="3_lmixt"]
+[ext_resource type="Script" path="res://AssetPack/AnimSprite2DAsset.gd" id="4_kt8lu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqtlf"]
+size = Vector2(96, 96)
+
+[node name="Flag" type="Area2D" groups=["finish"]]
+script = ExtResource("1_le02n")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_kqtlf")
+
+[node name="Node2DSnapping" type="Node2D" parent="."]
+position = Vector2(0, -48)
+script = ExtResource("2_pu8w4")
+
+[node name="flag" type="AnimatedSprite2D" parent="Node2DSnapping"]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("3_lmixt")
+animation = &"idle"
+script = ExtResource("4_kt8lu")
+sprite_name = "flag"

@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://oh2yypn78p1e"]
+
+[ext_resource type="Script" path="res://Game/Scripts/PlatformMove.gd" id="1_7pcox"]
+[ext_resource type="Script" path="res://Game/Scripts/PlayerX3.gd" id="2_m7ekh"]
+[ext_resource type="SpriteFrames" uid="uid://bx4qjh144bdw2" path="res://Sprites/s_platform_move.tres" id="3_t1f86"]
+[ext_resource type="Script" path="res://AssetPack/AnimSprite2DAsset.gd" id="4_nehpy"]
+[ext_resource type="Script" path="res://Game/Scripts/PlatformDrawerTool.gd" id="5_iecjk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aocay"]
+size = Vector2(144, 48)
+
+[node name="PlatformMove" type="Node2D"]
+script = ExtResource("1_7pcox")
+offset = Vector2(0, 300)
+
+[node name="Platform" type="AnimatableBody2D" parent="."]
+
+[node name="Node2DSnapping" type="Node2D" parent="Platform"]
+script = ExtResource("2_m7ekh")
+
+[node name="platform_move" type="AnimatedSprite2D" parent="Platform/Node2DSnapping"]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("3_t1f86")
+animation = &"idle"
+script = ExtResource("4_nehpy")
+sprite_name = "platform_move"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+shape = SubResource("RectangleShape2D_aocay")
+
+[node name="PlatformDrawerTool" type="Node2D" parent="."]
+script = ExtResource("5_iecjk")

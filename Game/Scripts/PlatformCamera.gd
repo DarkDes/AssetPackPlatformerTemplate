@@ -1,5 +1,6 @@
 extends Camera2D
 
+@export var snapping_pixels = 1
 @export var target : Node2D = null
 
 # Called when the node enters the scene tree for the first time.
@@ -13,4 +14,7 @@ func _process(delta):
 		#push_error("Camera: Target is null")
 		return
 	else:
-		global_position = target.global_position
+		if snapping_pixels > 1:
+			global_position = target.global_position.snapped(Vector2(snapping_pixels, snapping_pixels))
+		else:
+			global_position = target.global_position
