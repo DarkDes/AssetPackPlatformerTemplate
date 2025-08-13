@@ -19,6 +19,7 @@ func _ready():
 	
 	rescan_and_build_selector()
 	select_first_asset_pack()
+
 	
 	
 func rescan_and_build_selector():

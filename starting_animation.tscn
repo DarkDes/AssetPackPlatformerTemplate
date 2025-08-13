@@ -1,0 +1,200 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtget2hd0k7du"]
+
+[ext_resource type="FontFile" uid="uid://dboceye86vd1n" path="res://Roboto-Black.ttf" id="1_52hsy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tkqer"]
+font = ExtResource("1_52hsy")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_7f0d1"]
+font = ExtResource("1_52hsy")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_ey6th"]
+font = ExtResource("1_52hsy")
+font_size = 64
+
+[sub_resource type="Animation" id="Animation_23633"]
+resource_name = "starting"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rects:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 3.5, 4.0001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-616, 0), Vector2(0, 0), Vector2(0, 0), Vector2(-608, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Nickname:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 0.8, 2.8, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-184, -9), Vector2(96, -9), Vector2(112, -9), Vector2(1024, -9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Nickname2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.3, 2.3, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-176, 35), Vector2(96, 35), Vector2(128, 35), Vector2(976, 35)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Assetname:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5, 1.8, 3.3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-616, 56), Vector2(96, 56), Vector2(128, 56), Vector2(1024, 56)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ephrd"]
+_data = {
+"starting": SubResource("Animation_23633")
+}
+
+[node name="StartingAnimation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Rects" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -607.878
+offset_right = -607.879
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Rects"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -512.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Rects"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 456.0
+offset_right = -472.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Rects"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 504.0
+offset_right = -432.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Rects"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 552.0
+offset_right = -392.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Rects"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 600.0
+offset_right = -352.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -94.0
+offset_right = 376.0
+offset_bottom = 94.0
+grow_vertical = 2
+
+[node name="Nickname2" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 976.0
+offset_top = -59.0
+offset_right = 1148.0
+offset_bottom = -21.0
+grow_vertical = 2
+text = "Представляет"
+label_settings = SubResource("LabelSettings_tkqer")
+
+[node name="Nickname" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1024.0
+offset_top = -103.0
+offset_right = 1196.0
+offset_bottom = -65.0
+grow_vertical = 2
+text = "NICK NAME"
+label_settings = SubResource("LabelSettings_7f0d1")
+
+[node name="Assetname" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1024.0
+offset_top = -38.0
+offset_right = 1598.0
+offset_bottom = 38.0
+grow_vertical = 2
+text = "ASSET PACK NAME"
+label_settings = SubResource("LabelSettings_ey6th")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ephrd")
+}
+autoplay = "starting"
