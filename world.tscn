@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c762cjbn7lvhc"]
+[gd_scene load_steps=9 format=3 uid="uid://c762cjbn7lvhc"]
 
 [ext_resource type="Script" path="res://Game/Scripts/LevelMaster.gd" id="1_613tt"]
 [ext_resource type="PackedScene" uid="uid://buuspdsqrknt2" path="res://DevMenu/dev_menu.tscn" id="2_g46d3"]
 [ext_resource type="PackedScene" uid="uid://dpagqsfi3oiha" path="res://world_level_1.tscn" id="2_oyp7m"]
+[ext_resource type="PackedScene" uid="uid://24lb3lmgtke4" path="res://world_level_2.tscn" id="3_ie5k8"]
+[ext_resource type="Script" path="res://GameLevelReactor.gd" id="3_pl7oi"]
 [ext_resource type="PackedScene" uid="uid://dtget2hd0k7du" path="res://starting_animation.tscn" id="5_rij6j"]
 [ext_resource type="Script" path="res://starting_animation.gd" id="6_ao31a"]
 [ext_resource type="PackedScene" uid="uid://vjhjlnehaax4" path="res://Game/hud.tscn" id="27_u7liu"]
@@ -11,7 +13,10 @@
 
 [node name="LevelMaster" type="Node2D" parent="."]
 script = ExtResource("1_613tt")
-levels = Array[PackedScene]([ExtResource("2_oyp7m")])
+levels = Array[PackedScene]([ExtResource("2_oyp7m"), ExtResource("3_ie5k8")])
+
+[node name="GameLevelReactor" type="Node" parent="."]
+script = ExtResource("3_pl7oi")
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
@@ -21,3 +26,6 @@ levels = Array[PackedScene]([ExtResource("2_oyp7m")])
 
 [node name="StartingAnimation" parent="Interface" instance=ExtResource("5_rij6j")]
 script = ExtResource("6_ao31a")
+
+[connection signal="level_changed" from="LevelMaster" to="GameLevelReactor" method="_on_level_master_level_changed"]
+[connection signal="levels_end" from="LevelMaster" to="GameLevelReactor" method="_on_level_master_levels_end"]

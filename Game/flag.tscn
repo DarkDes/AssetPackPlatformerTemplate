@@ -9,6 +9,7 @@
 size = Vector2(96, 96)
 
 [node name="Flag" type="Area2D" groups=["finish"]]
+position = Vector2(0, 24)
 script = ExtResource("1_le02n")
 
 [node name="Shape" type="CollisionShape2D" parent="."]

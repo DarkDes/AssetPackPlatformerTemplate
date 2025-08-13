@@ -3,6 +3,7 @@ class_name LevelMaster
 extends Node2D
 
 signal levels_end
+signal level_changed
 
 @export var levels : Array[PackedScene] = []
 @export var level_index = 0 :
@@ -20,6 +21,7 @@ func next_level():
 		return
 	level_index += 1
 	load_level()
+	level_changed.emit()
 
 func load_level():
 	# Variant 0:

@@ -63,3 +63,4 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ofsff")
 script = ExtResource("1_tljyq")
 pixel_size = 1
+texture_default = ExtResource("1_3euda")
