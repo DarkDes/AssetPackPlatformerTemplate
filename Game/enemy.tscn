@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0m3gl6bmfn6k"]
+[gd_scene load_steps=12 format=3 uid="uid://d0m3gl6bmfn6k"]
 
 [ext_resource type="Script" path="res://Game/Scripts/Enemy.gd" id="1_53ix0"]
 [ext_resource type="SpriteFrames" uid="uid://c2qfrreuusi8w" path="res://Sprites/s_enemy.tres" id="2_agpve"]
 [ext_resource type="Script" path="res://Game/Scripts/PlayerX3.gd" id="2_u7wnc"]
 [ext_resource type="Script" path="res://AssetPack/AnimSprite2DAsset.gd" id="3_y7hmb"]
+[ext_resource type="Script" path="res://Game/Scripts/PlayerAnimations.gd" id="5_2niyr"]
 [ext_resource type="Script" path="res://Game/Scripts/EnemyAI.gd" id="5_pukqt"]
 [ext_resource type="Script" path="res://Game/Scripts/Danger.gd" id="6_1tkmo"]
 
@@ -22,6 +23,7 @@ size = Vector2(80, 88)
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_53ix0")
+speed = 120
 
 [node name="Node2DSnapping" type="Node2D" parent="."]
 position = Vector2(0, -48)
@@ -38,8 +40,16 @@ sprite_name = "enemy"
 position = Vector2(0, -40)
 shape = SubResource("RectangleShape2D_ggekv")
 
+[node name="AnimationController" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("5_2niyr")
+sprite = NodePath("../Node2DSnapping/Enemy")
+
 [node name="AI" type="Node" parent="."]
 script = ExtResource("5_pukqt")
+
+[node name="WallDetector" type="RayCast2D" parent="."]
+position = Vector2(0, -48)
+target_position = Vector2(48, 0)
 
 [node name="Hitbox" type="Area2D" parent="."]
 

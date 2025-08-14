@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://fy8pt15d2v0"]
+
+[ext_resource type="Script" path="res://Game/EnemyDying.gd" id="1_4bb50"]
+[ext_resource type="Script" path="res://Game/Scripts/PlayerX3.gd" id="2_03p7y"]
+[ext_resource type="SpriteFrames" uid="uid://c2qfrreuusi8w" path="res://Sprites/s_enemy.tres" id="3_i5j13"]
+[ext_resource type="Script" path="res://AssetPack/AnimSprite2DAsset.gd" id="4_0ucfh"]
+
+[node name="EnemyDying" type="Node2D"]
+script = ExtResource("1_4bb50")
+
+[node name="Node2DSnapping" type="Node2D" parent="."]
+position = Vector2(0, -48)
+script = ExtResource("2_03p7y")
+
+[node name="Enemy" type="AnimatedSprite2D" parent="Node2DSnapping"]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("3_i5j13")
+animation = &"dying"
+script = ExtResource("4_0ucfh")
+sprite_name = "enemy"
