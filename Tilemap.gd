@@ -5,6 +5,8 @@ func _ready():
 	tile_set.texture_changed.connect(texture_changed)
 	
 func texture_changed():
+	tile_set.update_image()
+	
 	# По какой-то ГОДОТ причине это не работает.
 	if tile_set.pixelated:
 		texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST

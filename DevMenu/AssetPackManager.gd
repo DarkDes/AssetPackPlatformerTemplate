@@ -89,16 +89,9 @@ func apply_assetpack(assetpack_data):
 	var tileset_path = assetpack_data.path.path_join("tilemap_0.png")
 	if FileAccess.file_exists(tileset_path):
 		var _image = Image.load_from_file(tileset_path)
-		var _texture = ImageTexture.create_from_image(_image)
 		for tileset in APM.tilesets:
-			var _tile_source_id = tileset.get_source_id(0)
-			var _tile_source = tileset.get_source(_tile_source_id)
-			var _tile_atlas = _tile_source as TileSetAtlasSource
-			if tileset is TileSetAsset:
-				if tileset.pixel_size == 3 and _image.get_size() == Vector2i(80,80):
-					_image.resize(80*3, 80*3, Image.INTERPOLATE_NEAREST)
-					_texture = ImageTexture.create_from_image(_image)
-			_tile_atlas.texture = _texture
+			tileset.image = _image
+			tileset.pixelated = assetpack_data.get_setting("pixel_art", false, false)
 	else:
 	# DEFAULT
 		for tileset in APM.tilesets:
