@@ -102,3 +102,4 @@ sources/0 = SubResource("TileSetAtlasSource_gdfpa")
 script = ExtResource("1_lqola")
 pixel_size = 3
 texture_default = ExtResource("1_pgs32")
+pixelated = false

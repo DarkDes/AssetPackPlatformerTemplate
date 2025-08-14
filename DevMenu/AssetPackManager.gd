@@ -62,16 +62,20 @@ func add_tilemap(tilemap):
 func apply_to_all():
 	var _pixelart 		= current.get_setting("pixel_art", false, false)
 	var _spritescale 	= current.get_setting("sprite_scale", 1, false)
+
 	for sprite_name in sprites:
 		sprites[sprite_name].pixelated 		= _pixelart
 		sprites[sprite_name].sprite_scale 	= _spritescale
 		
-	for tilemap in tilemaps:
-		if _pixelart:
-			tilemap.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		else:
-			tilemap.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	for tileset in tilesets:
+		tileset.pixelated = _pixelart
 
+func apply_to_sprites_default_fps(fps):
+	for sprite_name in sprites:
+		var sframes : SpriteFramesAsset = sprites[sprite_name]
+		for animation_name in sframes.get_animation_names():
+			if current.get_setting( "sprites_" + sprite_name + "_" + animation_name + "_fps", -1, false ) == -1:
+				sframes.set_animation_speed(animation_name, fps)
 
 ## 
 ## Найти, загрузить и применить спрайты

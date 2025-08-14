@@ -1,39 +1,14 @@
 class_name TileMapAsset
 extends TileMap
 
-var TILESET_ATLAS : AtlasTexture = preload("res://Tilemap/tileset_atlas.tres")
-var TILEMAP_0 = preload("res://Tilemap/tilemap_0.png")
-var TILEMAP_2 = preload("res://Tilemap/tilemap_0.png")
-
-var tiles = null
-
 func _ready():
-	tiles = TILESET_ATLAS.atlas
-	APM.add_tilemap(self)
-	#sprite_data.texture_changed.connect(texture_changed)
-	#texture_changed(sprite_data, sprite_data.texture)
-#
-#func texture_changed(sdata, _texture):
-	#texture = _texture
-
-
-
-
-func _input(event):
-	if event is InputEventKey:
-		if event.keycode == KEY_CTRL and event.is_pressed():
-			print("Change")
-			#var k = tile_set.get_source_id(0)
-			#var s : TileSetAtlasSource = tile_set.get_source(k)
-			#s.texture = TILEMAP_2
-			if TILESET_ATLAS.atlas == tiles:
-				TILESET_ATLAS.atlas = TILEMAP_0
-			else:
-				TILESET_ATLAS.atlas = tiles
-				
-	if event is InputEventKey:
-		if event.keycode == KEY_SHIFT and event.is_pressed():
-			if tile_set.tile_size == Vector2i(16,16):
-				tile_set.tile_size = Vector2i(48, 48)
-			else:
-				tile_set.tile_size = Vector2i(16, 16)
+	tile_set.texture_changed.connect(texture_changed)
+	
+func texture_changed():
+	# По какой-то ГОДОТ причине это не работает.
+	if tile_set.pixelated:
+		texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		print("Tilemap Texture filter changed to TEXTURE_FILTER_NEAREST")
+	else:
+		texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+		print("Tilemap Texture filter changed to TEXTURE_FILTER_LINEAR")

@@ -34,6 +34,7 @@ var ignore_change_fps = false
 func setup():
 	asset_data = APM.current
 	asset_name.text = asset_data.display_name;
+	APM.asset_changed.connect(_asset_changed)
 	
 	# Name
 	assetpack_name_edit.text = asset_data.display_name;
@@ -51,8 +52,8 @@ func setup():
 	scale_spin.value = asset_data.get_setting("sprite_scale", 1)
 	
 	pixel_art.toggled.connect(
-		func():
-			asset_data.set_setting("pixel_art", pixel_art.button_pressed)
+		func(toggled_on):
+			asset_data.set_setting("pixel_art", toggled_on)
 			APM.apply_to_all()
 	)
 	ui_lives_selector.item_selected.connect(
@@ -63,7 +64,9 @@ func setup():
 			asset_data.set_setting("ui_coins_method", ui_coins_selector.get_item_text(index)) )
 	deafult_fps_spin.value_changed.connect(
 		func(value):
-			asset_data.set_setting("default_fps", value))
+			asset_data.set_setting("default_fps", value)
+			APM.apply_to_sprites_default_fps(value)
+			)
 	
 	scale_spin.value_changed.connect(
 		func(value):
@@ -84,6 +87,20 @@ func setup():
 	_on_sprites_lits_item_selected(0)
 	animations_list.select(0)
 	_on_animations_list_item_selected(0)
+
+func _asset_changed(asset):
+	asset_name.text = asset_data.display_name;
+
+	# Name
+	assetpack_name_edit.text = asset_data.display_name;
+	nickname_edit.text = asset_data.author_name;
+
+	# Main
+	pixel_art.button_pressed = asset_data.get_setting("pixel_art", false)
+	ui_lives_selector.text = asset_data.get_setting("ui_lives_method", "NUMBERS")
+	ui_coins_selector.text = asset_data.get_setting("ui_coins_method", "NUMBERS")
+	deafult_fps_spin.value = asset_data.get_setting("default_fps", 5)
+	scale_spin.value = asset_data.get_setting("sprite_scale", 1)
 	
 
 func _on_save_pressed():
