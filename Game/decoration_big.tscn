@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://AssetPack/AnimSprite2DAsset.gd" id="3_fkwhl"]
 
 [node name="Decoration_Big" type="Node2D"]
+position = Vector2(0, 24)
 
 [node name="Node2DSnapping" type="Node2D" parent="."]
 position = Vector2(0, -72)

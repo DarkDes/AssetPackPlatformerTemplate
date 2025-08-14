@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://fy8pt15d2v0"]
 
-[ext_resource type="Script" path="res://Game/EnemyDying.gd" id="1_4bb50"]
+[ext_resource type="Script" path="res://Game/Scripts/EnemyDying.gd" id="1_4bb50"]
 [ext_resource type="Script" path="res://Game/Scripts/PlayerX3.gd" id="2_03p7y"]
 [ext_resource type="SpriteFrames" uid="uid://c2qfrreuusi8w" path="res://Sprites/s_enemy.tres" id="3_i5j13"]
 [ext_resource type="Script" path="res://AssetPack/AnimSprite2DAsset.gd" id="4_0ucfh"]

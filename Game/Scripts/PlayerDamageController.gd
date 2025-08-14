@@ -22,7 +22,8 @@ func _on_take_damage():
 	GD.lives -= 1
 	if GD.lives < 0:
 		print("Game Over")
-	
+		GD.level_restart()
+		
 	ignore_damage = true
 	await get_tree().create_timer(2.0).timeout
 	ignore_damage = false

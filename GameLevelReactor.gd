@@ -5,12 +5,19 @@ extends Node
 
 func _ready():
 	GD.level_finished.connect(_on_level_finished)
-	
+	GD.level_restarted.connect(_on_level_restarted)
+
 func _on_level_finished():
 	get_tree().paused = true
 	await get_tree().create_timer(0.5).timeout
 	get_tree().paused = false
 	level_master.next_level()
+
+func _on_level_restarted():
+	get_tree().paused = true
+	await get_tree().create_timer(0.5).timeout
+	get_tree().paused = false
+	level_master.restart_level()
 
 func _on_level_master_level_changed():
 	pass # Replace with function body.

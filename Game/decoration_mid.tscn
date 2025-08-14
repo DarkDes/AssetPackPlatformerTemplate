@@ -7,7 +7,7 @@
 [node name="Decoration_Mid" type="Node2D"]
 
 [node name="Node2DSnapping" type="Node2D" parent="."]
-position = Vector2(0, -48)
+position = Vector2(0, -24)
 script = ExtResource("1_opddr")
 
 [node name="decortaion_mid" type="AnimatedSprite2D" parent="Node2DSnapping"]

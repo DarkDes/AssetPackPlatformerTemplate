@@ -7,7 +7,6 @@
 [node name="Decoration_Small" type="Node2D"]
 
 [node name="Node2DSnapping" type="Node2D" parent="."]
-position = Vector2(0, -24)
 script = ExtResource("1_filpw")
 
 [node name="decoration_small" type="AnimatedSprite2D" parent="Node2DSnapping"]
