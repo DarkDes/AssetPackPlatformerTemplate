@@ -24,5 +24,5 @@ func level_finish():
 	
 func level_restart():
 	print("GD Level Restarting")
-	lives = 1
+	if lives <= 0: lives = 0
 	level_restarted.emit()

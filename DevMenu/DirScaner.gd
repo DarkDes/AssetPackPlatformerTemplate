@@ -36,6 +36,9 @@ func scan_asset_directory():
 		var author_path = ASSET_DIR.path_join(author)
 		var dir_access = DirAccess.open(author_path)
 		dir_access.list_dir_begin()
+		
+		# APM.assets_data.clear()
+		
 		var file_name: String = dir_access.get_next()
 		while file_name != "":
 			var settings_path = author_path.path_join(file_name).path_join(SETTINGS_FILE)
@@ -58,7 +61,9 @@ func scan_asset_directory():
 						data.display_name = data.settings_data.assetpack_name
 				
 				# Add to Asset Master
-				APM.assets_data.append( data )
+				var _found = APM.assets_data.filter(func(e:AssetPackData): return e.path == data.path)
+				if _found.size() == 0:
+					APM.assets_data.append( data )
 				
 			file_name = dir_access.get_next()
 		dir_access.list_dir_end()

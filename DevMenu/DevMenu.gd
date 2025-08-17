@@ -7,6 +7,9 @@ extends Control
 
 @onready var create_new_asset_pack_panel = $CreateNewAssetPackPanel
 
+@onready var skip_intro = $DevToolPanel/SkipIntro
+
+
 @onready var dir_scaner = $DirScaner
 
 var TILESET_ATLAS : AtlasTexture = preload("res://Tilemap/tileset_atlas.tres")
@@ -23,6 +26,8 @@ func _ready():
 
 func rescan_and_build_selector():
 	dir_scaner.scan_asset_directory();
+	
+	asset_pack_selector.clear()
 	var index = 0;
 	for n in APM.assets_data:
 		n.index = index

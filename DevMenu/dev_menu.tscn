@@ -16,6 +16,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 960.0
 offset_bottom = 540.0
+mouse_filter = 2
 theme = ExtResource("1_opjtk")
 script = ExtResource("2_o631x")
 
@@ -77,6 +78,14 @@ offset_right = 120.0
 offset_bottom = 72.0
 theme = ExtResource("1_opjtk")
 text = "Edit"
+
+[node name="SkipIntro" type="CheckBox" parent="DevToolPanel"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 48.0
+offset_right = 256.0
+offset_bottom = 80.0
+text = "Skip intro"
 
 [node name="AddNewAssetPack" type="Button" parent="DevToolPanel"]
 layout_mode = 0

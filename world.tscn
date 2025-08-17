@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c762cjbn7lvhc"]
+[gd_scene load_steps=11 format=3 uid="uid://c762cjbn7lvhc"]
 
 [ext_resource type="Script" path="res://Game/Scripts/LevelMaster.gd" id="1_613tt"]
 [ext_resource type="PackedScene" uid="uid://comgk2esxmubd" path="res://world_level_3.tscn" id="2_ditwc"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://24lb3lmgtke4" path="res://world_level_2.tscn" id="3_ie5k8"]
 [ext_resource type="Script" path="res://GameLevelReactor.gd" id="3_pl7oi"]
 [ext_resource type="PackedScene" uid="uid://dtget2hd0k7du" path="res://starting_animation.tscn" id="5_rij6j"]
+[ext_resource type="Script" path="res://Interface.gd" id="6_7dmud"]
 [ext_resource type="Script" path="res://starting_animation.gd" id="6_ao31a"]
 [ext_resource type="PackedScene" uid="uid://vjhjlnehaax4" path="res://Game/hud.tscn" id="27_u7liu"]
 
@@ -20,6 +21,7 @@ levels = Array[PackedScene]([ExtResource("2_ditwc"), ExtResource("2_oyp7m"), Ext
 script = ExtResource("3_pl7oi")
 
 [node name="Interface" type="CanvasLayer" parent="."]
+script = ExtResource("6_7dmud")
 
 [node name="HUD" parent="Interface" instance=ExtResource("27_u7liu")]
 

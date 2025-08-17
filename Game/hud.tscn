@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://vjhjlnehaax4"]
+[gd_scene load_steps=7 format=3 uid="uid://vjhjlnehaax4"]
 
 [ext_resource type="Script" path="res://Game/Scripts/hud.gd" id="1_nu5af"]
 [ext_resource type="SpriteFrames" uid="uid://tdk7eg7ju4tj" path="res://Sprites/s_ui_live.tres" id="1_q1rbe"]
 [ext_resource type="Script" path="res://AssetPack/AnimSprite2DAsset.gd" id="2_5ys4x"]
 [ext_resource type="Theme" uid="uid://camj2h6115iy2" path="res://DevMenu/ui_devmenu_theme.tres" id="3_x4e1e"]
 [ext_resource type="SpriteFrames" uid="uid://cqdv0ndqlw243" path="res://Sprites/s_ui_coin.tres" id="4_ej44t"]
+[ext_resource type="Shortcut" uid="uid://cf3nmbfu458lu" path="res://shortcut_restart_level.tres" id="6_tmcra"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -13,7 +14,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 theme = ExtResource("3_x4e1e")
 script = ExtResource("1_nu5af")
 
@@ -121,3 +121,19 @@ animation = &"idle"
 centered = false
 script = ExtResource("2_5ys4x")
 sprite_name = "ui_coin"
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme = ExtResource("3_x4e1e")
+shortcut = ExtResource("6_tmcra")
+text = "Restart (R)"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

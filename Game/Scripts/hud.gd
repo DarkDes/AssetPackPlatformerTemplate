@@ -92,3 +92,7 @@ func update_ui_elements(method, ui_elem_text, ui_elem_counts, ui_elem_label, spr
 			child.position.x = ui_elem_counts.get_child(0).position.x
 			child.position.x += child_index * APM.sprite_def[sprite_element_name].base_size.x * sprite_scale
 	update_elements_display()
+
+
+func _on_restart_button_pressed():
+	GD.level_restart()

@@ -1,0 +1,8 @@
+[gd_resource type="Shortcut" load_steps=2 format=3 uid="uid://cf3nmbfu458lu"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_43ecb"]
+action = &"restart"
+pressed = true
+
+[resource]
+events = [SubResource("InputEventAction_43ecb")]
