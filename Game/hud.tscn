@@ -14,60 +14,110 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("3_x4e1e")
 script = ExtResource("1_nu5af")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 12
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = -76.0
-offset_right = 72.0
-offset_bottom = -36.0
+offset_left = 24.0
+offset_top = -124.0
+offset_right = -24.0
+offset_bottom = -28.0
+grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("3_x4e1e")
 
 [node name="UILivesText" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("3_x4e1e")
 
 [node name="ui_live" type="AnimatedSprite2D" parent="VBoxContainer/UILivesText"]
-position = Vector2(16, 16)
+position = Vector2(24, 24)
+scale = Vector2(3, 3)
 sprite_frames = ExtResource("1_q1rbe")
 animation = &"idle"
 script = ExtResource("2_5ys4x")
 sprite_name = "ui_live"
 
 [node name="LivesLabel" type="Label" parent="VBoxContainer/UILivesText"]
-layout_mode = 2
-offset_left = 32.0
-offset_top = 16.0
-offset_right = 56.0
-offset_bottom = 24.0
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 56.0
+offset_top = -23.0
+offset_right = -755.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
 theme = ExtResource("3_x4e1e")
 text = "x 3"
-horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UICoins" type="Control" parent="VBoxContainer"]
+[node name="UILivesCounts" type="Control" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("3_x4e1e")
 
-[node name="ui_coin" type="AnimatedSprite2D" parent="VBoxContainer/UICoins"]
-position = Vector2(16, 16)
+[node name="ui_live" type="AnimatedSprite2D" parent="VBoxContainer/UILivesCounts"]
+position = Vector2(0, -1)
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("1_q1rbe")
+animation = &"idle"
+centered = false
+script = ExtResource("2_5ys4x")
+sprite_name = "ui_live"
+
+[node name="UICoinsText" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_x4e1e")
+
+[node name="ui_coin" type="AnimatedSprite2D" parent="VBoxContainer/UICoinsText"]
+position = Vector2(24, 22)
+scale = Vector2(3, 3)
 sprite_frames = ExtResource("4_ej44t")
 animation = &"idle"
 script = ExtResource("2_5ys4x")
 sprite_name = "ui_coin"
 
-[node name="CoinsLabel" type="Label" parent="VBoxContainer/UICoins"]
+[node name="CoinsLabel" type="Label" parent="VBoxContainer/UICoinsText"]
 texture_filter = 1
-layout_mode = 2
-offset_left = 32.0
-offset_top = 16.0
-offset_right = 56.0
-offset_bottom = 24.0
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 56.0
+offset_top = -25.0
+offset_right = -755.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
 theme = ExtResource("3_x4e1e")
 text = "x 999"
-horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="UICoinsCounts" type="Control" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_x4e1e")
+
+[node name="ui_coin" type="AnimatedSprite2D" parent="VBoxContainer/UICoinsCounts"]
+position = Vector2(0, -2)
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("4_ej44t")
+animation = &"idle"
+centered = false
+script = ExtResource("2_5ys4x")
+sprite_name = "ui_coin"

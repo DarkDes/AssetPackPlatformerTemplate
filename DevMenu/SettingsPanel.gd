@@ -55,13 +55,18 @@ func setup():
 		func(toggled_on):
 			asset_data.set_setting("pixel_art", toggled_on)
 			APM.apply_to_all()
+			APM.ui_setting_changed.emit()
 	)
 	ui_lives_selector.item_selected.connect(
 		func(index):
-			asset_data.set_setting("ui_lives_method", ui_lives_selector.get_item_text(index)) )
+			asset_data.set_setting("ui_lives_method", ui_lives_selector.get_item_text(index))
+			APM.ui_setting_changed.emit()
+			)
 	ui_coins_selector.item_selected.connect(
 		func(index):
-			asset_data.set_setting("ui_coins_method", ui_coins_selector.get_item_text(index)) )
+			asset_data.set_setting("ui_coins_method", ui_coins_selector.get_item_text(index))
+			APM.ui_setting_changed.emit()
+			)
 	deafult_fps_spin.value_changed.connect(
 		func(value):
 			asset_data.set_setting("default_fps", value)
@@ -72,6 +77,7 @@ func setup():
 		func(value):
 			asset_data.set_setting("sprite_scale", value)
 			APM.apply_to_all()
+			APM.ui_setting_changed.emit()
 	)
 	
 	# По всем спрайтам

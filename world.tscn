@@ -21,9 +21,9 @@ script = ExtResource("3_pl7oi")
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
-[node name="DevMenu" parent="Interface" instance=ExtResource("2_g46d3")]
-
 [node name="HUD" parent="Interface" instance=ExtResource("27_u7liu")]
+
+[node name="DevMenu" parent="Interface" instance=ExtResource("2_g46d3")]
 
 [node name="StartingAnimation" parent="Interface" instance=ExtResource("5_rij6j")]
 script = ExtResource("6_ao31a")

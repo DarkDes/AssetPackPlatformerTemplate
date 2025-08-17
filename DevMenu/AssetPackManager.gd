@@ -2,6 +2,7 @@ class_name AssetPackManager
 extends Node
 
 signal asset_changed
+signal ui_setting_changed
 
 var current : AssetPackData = null :
 	set(value):

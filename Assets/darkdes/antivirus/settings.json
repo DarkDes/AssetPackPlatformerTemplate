@@ -1,11 +1,11 @@
 {
 	"assetpack_name": "Anti-Virus Platformer",
-	"default_fps": 10,
+	"default_fps": 25,
 	"pixel_art": true,
 	"sprite_scale": 3,
 	"sprites_background_idle_fps": 10,
-	"sprites_background_parallax_idle_fps": 10,
-	"sprites_coin_idle_fps": 10,
+	"sprites_background_parallax_idle_fps": 15,
+	"sprites_coin_idle_fps": 15,
 	"sprites_danger_idle_fps": 10,
 	"sprites_decoration_big_idle_fps": 10,
 	"sprites_decoration_mid_idle_fps": 10,
@@ -14,11 +14,12 @@
 	"sprites_enemy_move_fps": 10,
 	"sprites_flag_idle_fps": 10,
 	"sprites_platform_move_idle_fps": 10,
+	"sprites_platform_static_idle_fps": 10,
 	"sprites_player_fall_fps": 10,
-	"sprites_player_idle_fps": 25,
+	"sprites_player_idle_fps": 15,
 	"sprites_player_move_fps": 10,
 	"sprites_ui_coin_idle_fps": 10,
 	"sprites_ui_live_idle_fps": 10,
 	"ui_coins_method": "NUMBERS",
-	"ui_lives_method": "NUMBERS"
+	"ui_lives_method": "COUNT"
 }
