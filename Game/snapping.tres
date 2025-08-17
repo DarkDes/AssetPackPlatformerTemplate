@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_fw2oj")
 snapping_scale = 3
-snapping = false
+snapping = true

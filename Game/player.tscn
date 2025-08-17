@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3tibanldaq15"]
+[gd_scene load_steps=12 format=3 uid="uid://d3tibanldaq15"]
 
 [ext_resource type="Script" path="res://Game/Scripts/Player.gd" id="1_csie7"]
 [ext_resource type="Script" path="res://Game/Scripts/PlayerX3.gd" id="2_auyv4"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Game/Scripts/PlayerAnimations.gd" id="4_bcgyv"]
 [ext_resource type="Script" path="res://Game/Scripts/PlayerPickupArea.gd" id="5_vu7t8"]
 [ext_resource type="Script" path="res://Game/Scripts/PlayerDamageController.gd" id="7_sol0l"]
+[ext_resource type="Script" path="res://Game/ActionController.gd" id="8_41wr3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8w4ye"]
 size = Vector2(64, 80)
@@ -29,7 +30,8 @@ script = ExtResource("2_auyv4")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="SpritePivot"]
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("2_foqg2")
-animation = &"idle"
+animation = &"action"
+frame_progress = 1.0
 script = ExtResource("3_d1cs1")
 sprite_name = "player"
 
@@ -63,3 +65,6 @@ wait_time = 0.1
 position = Vector2(0, -48)
 shape = SubResource("RectangleShape2D_tjlvn")
 debug_color = Color(0.910243, 0.000104733, 0.730668, 0.42)
+
+[node name="ActionController_WhyMisterAnderson?Why?" type="Node" parent="."]
+script = ExtResource("8_41wr3")

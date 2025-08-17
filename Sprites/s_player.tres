@@ -8,10 +8,31 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_hhm8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_hhm8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_hhm8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_hhm8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_hhm8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_hhm8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_hhm8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_hhm8x")
 }],
-"loop": true,
+"loop": false,
 "name": &"action",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -47,3 +68,4 @@ animations = [{
 }]
 script = ExtResource("2_sn68l")
 pixelated = false
+sprite_scale = 3.0

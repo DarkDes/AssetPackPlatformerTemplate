@@ -94,5 +94,3 @@ func update_ui_elements(method, ui_elem_text, ui_elem_counts, ui_elem_label, spr
 	update_elements_display()
 
 
-func _on_restart_button_pressed():
-	GD.level_restart()

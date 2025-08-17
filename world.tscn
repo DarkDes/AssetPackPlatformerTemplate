@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c762cjbn7lvhc"]
+[gd_scene load_steps=13 format=3 uid="uid://c762cjbn7lvhc"]
 
 [ext_resource type="Script" path="res://Game/Scripts/LevelMaster.gd" id="1_613tt"]
 [ext_resource type="PackedScene" uid="uid://comgk2esxmubd" path="res://world_level_3.tscn" id="2_ditwc"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dtget2hd0k7du" path="res://starting_animation.tscn" id="5_rij6j"]
 [ext_resource type="Script" path="res://Interface.gd" id="6_7dmud"]
 [ext_resource type="Script" path="res://starting_animation.gd" id="6_ao31a"]
+[ext_resource type="Theme" uid="uid://camj2h6115iy2" path="res://DevMenu/ui_devmenu_theme.tres" id="11_qgxve"]
+[ext_resource type="Shortcut" uid="uid://cf3nmbfu458lu" path="res://shortcut_restart_level.tres" id="12_tcga2"]
 [ext_resource type="PackedScene" uid="uid://vjhjlnehaax4" path="res://Game/hud.tscn" id="27_u7liu"]
 
 [node name="World" type="Node2D"]
@@ -29,6 +31,32 @@ script = ExtResource("6_7dmud")
 
 [node name="StartingAnimation" parent="Interface" instance=ExtResource("5_rij6j")]
 script = ExtResource("6_ao31a")
+
+[node name="ScreenshotButton" type="Button" parent="Interface"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_top = 32.0
+offset_right = -8.0
+offset_bottom = 48.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+theme = ExtResource("11_qgxve")
+text = "Screen shot"
+
+[node name="RestartButton" type="Button" parent="Interface"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme = ExtResource("11_qgxve")
+shortcut = ExtResource("12_tcga2")
+text = "Restart (R)"
 
 [connection signal="level_changed" from="LevelMaster" to="GameLevelReactor" method="_on_level_master_level_changed"]
 [connection signal="levels_end" from="LevelMaster" to="GameLevelReactor" method="_on_level_master_levels_end"]
