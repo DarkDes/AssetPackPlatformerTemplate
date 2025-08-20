@@ -23,9 +23,23 @@ func _ready():
 			screenshot_button.visible = false
 			restart_button.visible = false
 			
-			var filename = "screenshot_" + Time.get_date_string_from_system() + "_" + Time.get_time_string_from_system() + ".png"
-			filename = filename.replace(":", "")
-			filename = APM.current.path.path_join(filename)
+			var _screenshot_hub = true
+			var filename : String = "s.png"
+			# Имя скриншота в общей папке 
+			if _screenshot_hub == true:
+				filename = OS.get_executable_path().get_base_dir().path_join("Screenshots")
+				if DirAccess.dir_exists_absolute(filename) == false:
+					DirAccess.make_dir_absolute(filename)
+				var _time_date = Time.get_datetime_dict_from_system()
+				filename = filename.path_join("Screenshot %s %04d-%02d-%02d T%02d-%02d-%02d.png" % \
+						[APM.current.get_assetpack_name(),
+						_time_date.year, _time_date.month, _time_date.day, 
+						_time_date.hour, _time_date.minute, _time_date.second])
+			else:
+			# Скриншот в папке с ассетпаком
+				filename = "screenshot_" + Time.get_date_string_from_system() + "_" + Time.get_time_string_from_system() + ".png"
+				filename = filename.replace(":", "")
+				filename = APM.current.path.path_join(filename)
 			
 			await RenderingServer.frame_post_draw
 			var image = get_viewport().get_texture().get_image()

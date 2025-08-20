@@ -7,7 +7,7 @@ const SETTINGS_FILE : String = "settings.json"
 var authors_dirs = []
 
 func _ready():
-	if FileAccess.file_exists(ASSET_DIR) == false:
+	if DirAccess.dir_exists_absolute(ASSET_DIR) == false:
 		ASSET_DIR = "res://Assets"
 
 func make_asset_directory(author, asset_name):

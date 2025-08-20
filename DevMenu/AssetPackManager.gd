@@ -100,6 +100,8 @@ func apply_assetpack(assetpack_data):
 			var _tile_source = tileset.get_source(_tile_source_id)
 			var _tile_atlas = _tile_source as TileSetAtlasSource
 			_tile_atlas.texture = tileset.texture_default
+	
+	ui_setting_changed.emit()
 
 
 func apply_sprite_from_assetpack(sprite_name, sprite_data, assetpack_data):

@@ -108,6 +108,8 @@ func _asset_changed(asset):
 	deafult_fps_spin.value = asset_data.get_setting("default_fps", 5)
 	scale_spin.value = asset_data.get_setting("sprite_scale", 1)
 	
+	APM.ui_setting_changed.emit()
+	
 
 func _on_save_pressed():
 	var data_string = JSON.stringify(asset_data.settings_data, "\t") 
