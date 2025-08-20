@@ -19,6 +19,7 @@ const ROBOTO_BLACK = preload("res://Roboto-Black.ttf")
 func _ready():
 	GD.stats_changed.connect(update_elements_display)
 	APM.ui_setting_changed.connect(_on_change_method)
+	APM.asset_changed.connect(_on_change_method)
 	
 	await get_tree().process_frame
 	_on_change_method()

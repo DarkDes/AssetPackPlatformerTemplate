@@ -1,10 +1,10 @@
 [gd_resource type="TileSet" script_class="TileSetAsset" load_steps=4 format=3 uid="uid://c60p71ipbiuek"]
 
 [ext_resource type="Script" path="res://AssetPack/TileSetAsset.gd" id="1_lqola"]
-[ext_resource type="Texture2D" uid="uid://0wm82xc0yajc" path="res://Tilemap/tilemap_x3.png" id="1_pgs32"]
+[ext_resource type="Texture2D" uid="uid://0wm82xc0yajc" path="res://Tilemap/tileset_x3.png" id="2_6cmnn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gdfpa"]
-texture = ExtResource("1_pgs32")
+texture = ExtResource("2_6cmnn")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -101,5 +101,5 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_gdfpa")
 script = ExtResource("1_lqola")
 pixel_size = 3
-texture_default = ExtResource("1_pgs32")
+texture_default = ExtResource("2_6cmnn")
 pixelated = false

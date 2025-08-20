@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Game/Scripts/PlayerX3.gd" id="2_vnjnl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqkan"]
-size = Vector2(10, 10)
+size = Vector2(32, 32)
 
 [node name="Coin" type="Area2D" groups=["coin"]]
 collision_layer = 2

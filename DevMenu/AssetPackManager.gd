@@ -87,7 +87,7 @@ func apply_assetpack(assetpack_data):
 		apply_sprite_from_assetpack(sprite_key, APM.sprite_def[sprite_key], assetpack_data)
 	
 	# TILEMAP
-	var tileset_path = assetpack_data.path.path_join("tilemap_0.png")
+	var tileset_path = assetpack_data.path.path_join("tileset_0.png")
 	if FileAccess.file_exists(tileset_path):
 		var _image = Image.load_from_file(tileset_path)
 		for tileset in APM.tilesets:
