@@ -1,3 +1,4 @@
+class_name DirScaner
 extends Node
 
 #var ASSET_DIR : String = "res://Assets"
@@ -94,7 +95,7 @@ func scan_authors():
 ## 
 ## 
 ## 
-func read_json_file(file_path: String) -> Variant:
+static func read_json_file(file_path: String) -> Variant:
 	var file = FileAccess.open(file_path, FileAccess.READ)
 	if file == null:
 		push_error("Error opening file: " + file_path)

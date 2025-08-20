@@ -369,6 +369,17 @@ grow_vertical = 0
 theme = ExtResource("1_opjtk")
 text = "Save"
 
+[node name="Reload" type="Button" parent="DevToolPanel/SettingsPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 40.0
+grow_vertical = 0
+theme = ExtResource("1_opjtk")
+text = "Reload"
+
 [node name="CreateNewAssetPackPanel" type="Panel" parent="."]
 process_mode = 2
 layout_mode = 1
@@ -477,3 +488,4 @@ text = "Cancel"
 [connection signal="item_selected" from="DevToolPanel/SettingsPanel/Anims/AnimationsList" to="DevToolPanel/SettingsPanel" method="_on_animations_list_item_selected"]
 [connection signal="value_changed" from="DevToolPanel/SettingsPanel/AnimData/FPS/FPSSpin" to="DevToolPanel/SettingsPanel" method="_on_fps_spin_value_changed"]
 [connection signal="pressed" from="DevToolPanel/SettingsPanel/Save" to="DevToolPanel/SettingsPanel" method="_on_save_pressed"]
+[connection signal="pressed" from="DevToolPanel/SettingsPanel/Reload" to="DevToolPanel/SettingsPanel" method="_on_reload_pressed"]

@@ -24,7 +24,7 @@ func get_setting(setting_name, default_value, create_if_no_exists=true):
 	return default_value
 	
 func set_setting(setting_name, value):
-	if value != settings_data[setting_name]:
-		var _prev = settings_data[setting_name] if settings_data.has(setting_name) else null
+	var _prev = settings_data[setting_name] if settings_data.has(setting_name) else null
+	if value != _prev:
 		setting_changed.emit(setting_name, _prev, value)
 	settings_data[setting_name] = value

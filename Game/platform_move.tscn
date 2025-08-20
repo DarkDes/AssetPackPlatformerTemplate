@@ -27,6 +27,7 @@ sprite_name = "platform_move"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
 shape = SubResource("RectangleShape2D_aocay")
+one_way_collision = true
 
 [node name="PlatformDrawerTool" type="Node2D" parent="."]
 script = ExtResource("5_iecjk")

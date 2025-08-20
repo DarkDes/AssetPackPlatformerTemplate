@@ -35,7 +35,7 @@ func setup():
 	asset_data = APM.current
 	asset_name.text = asset_data.display_name;
 	APM.asset_changed.connect(_asset_changed)
-	
+
 	# Name
 	assetpack_name_edit.text = asset_data.display_name;
 	nickname_edit.text = asset_data.author_name;
@@ -113,13 +113,30 @@ func _asset_changed(asset):
 
 func _on_save_pressed():
 	var data_string = JSON.stringify(asset_data.settings_data, "\t") 
-	var file = FileAccess.open(asset_data.path.path_join("settings.json"), FileAccess.WRITE)
+	var file = FileAccess.open(asset_data.path.path_join(DirScaner.SETTINGS_FILE), FileAccess.WRITE)
 	file.store_string(data_string)
 	file.close()
 	
 	# Использовать новые настройки
 	# asset_data.settings_data.
 
+func _on_reload_pressed():
+	var settings_path = asset_data.path.path_join(DirScaner.SETTINGS_FILE)
+	asset_data.settings_data = DirScaner.read_json_file(settings_path)
+	# Гарантировать наличие настроек
+	if asset_data.settings_data == null: asset_data.settings_data = {}
+
+	# Find Display Name
+	if asset_data.settings_data != null:
+		if "author" in asset_data.settings_data:
+			asset_data.author_name = asset_data.settings_data.author
+		if "assetpack_name" in asset_data.settings_data:
+			asset_data.display_name = asset_data.settings_data.assetpack_name
+	
+	APM.apply_to_sprites_default_fps(asset_data.get_setting("default_fps", 5, false))
+	APM.apply_to_all()
+	APM.ui_setting_changed.emit()
+	_asset_changed(APM.current)
 
 func _on_edit_asset_pack_pressed():
 	visible = !visible
@@ -195,4 +212,5 @@ func get_sprite_data_for_changes(sprite_name):
 		_sprites[sprite_name] = {}
 	var _config = _sprites[sprite_name]
 	return _config
+
 
