@@ -23,6 +23,8 @@ func _ready():
 	rescan_and_build_selector()
 	select_first_asset_pack()
 
+func _gui_input(event):
+	print(event)
 
 func rescan_and_build_selector():
 	dir_scaner.scan_asset_directory();
@@ -71,3 +73,5 @@ func _on_asset_pack_selector_item_selected(index):
 func _on_add_new_asset_pack_pressed():
 	create_new_asset_pack_panel.visible = true
 	get_tree().paused = true
+
+

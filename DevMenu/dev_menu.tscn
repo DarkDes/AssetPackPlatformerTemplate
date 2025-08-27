@@ -380,8 +380,21 @@ grow_vertical = 0
 theme = ExtResource("1_opjtk")
 text = "Reload"
 
+[node name="ShowSettingsDebug" type="Button" parent="DevToolPanel/SettingsPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 24.0
+grow_vertical = 0
+theme = ExtResource("1_opjtk")
+text = "Show Settings Debug"
+
 [node name="CreateNewAssetPackPanel" type="Panel" parent="."]
 process_mode = 2
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -484,8 +497,9 @@ text = "Cancel"
 [connection signal="item_selected" from="DevToolPanel/AssetPackCon/AssetPackSelector" to="." method="_on_asset_pack_selector_item_selected"]
 [connection signal="pressed" from="DevToolPanel/EditAssetPack" to="DevToolPanel/SettingsPanel" method="_on_edit_asset_pack_pressed"]
 [connection signal="pressed" from="DevToolPanel/AddNewAssetPack" to="." method="_on_add_new_asset_pack_pressed"]
-[connection signal="item_selected" from="DevToolPanel/SettingsPanel/Sprites/SpritesList" to="DevToolPanel/SettingsPanel" method="_on_sprites_lits_item_selected"]
+[connection signal="item_selected" from="DevToolPanel/SettingsPanel/Sprites/SpritesList" to="DevToolPanel/SettingsPanel" method="_on_sprites_list_item_selected"]
 [connection signal="item_selected" from="DevToolPanel/SettingsPanel/Anims/AnimationsList" to="DevToolPanel/SettingsPanel" method="_on_animations_list_item_selected"]
 [connection signal="value_changed" from="DevToolPanel/SettingsPanel/AnimData/FPS/FPSSpin" to="DevToolPanel/SettingsPanel" method="_on_fps_spin_value_changed"]
 [connection signal="pressed" from="DevToolPanel/SettingsPanel/Save" to="DevToolPanel/SettingsPanel" method="_on_save_pressed"]
 [connection signal="pressed" from="DevToolPanel/SettingsPanel/Reload" to="DevToolPanel/SettingsPanel" method="_on_reload_pressed"]
+[connection signal="pressed" from="DevToolPanel/SettingsPanel/ShowSettingsDebug" to="DevToolPanel/SettingsPanel" method="_debug_print_setting_data"]

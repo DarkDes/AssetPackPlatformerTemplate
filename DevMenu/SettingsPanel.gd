@@ -4,6 +4,7 @@ extends Panel
 const K_SPRITES = "sprites"
 const K_ANIMATIONS = "animations"
 const K_FPS = "fps"
+const K_DEFAULT_FPS = 5
 
 @onready var asset_pack_selector = $"../AssetPackCon/AssetPackSelector"
 @onready var add_new_asset_pack = $"../AddNewAssetPack"
@@ -29,13 +30,16 @@ var asset_data : AssetPackData = null
 var sprite_selected_name = null
 var animation_selected_name = null
 
-var ignore_change_fps = false
+var ignore_writin_in_settings_fps = false
+
+func get_current_sprite_animation_key(add = ""):
+	return "%s_%s_%s_%s" % [K_SPRITES, sprite_selected_name, animation_selected_name, add]
 
 func setup():
 	asset_data = APM.current
 	asset_name.text = asset_data.display_name;
 	APM.asset_changed.connect(_asset_changed)
-
+	
 	# Name
 	assetpack_name_edit.text = asset_data.display_name;
 	nickname_edit.text = asset_data.author_name;
@@ -45,10 +49,11 @@ func setup():
 		func(): asset_data.settings_data.author_name = nickname_edit.text )
 	
 	# Main
+	ignore_writin_in_settings_fps = true
 	pixel_art.button_pressed = asset_data.get_setting("pixel_art", false)
 	ui_lives_selector.text = asset_data.get_setting("ui_lives_method", "NUMBERS")
 	ui_coins_selector.text = asset_data.get_setting("ui_coins_method", "NUMBERS")
-	deafult_fps_spin.value = asset_data.get_setting("default_fps", 5)
+	deafult_fps_spin.value = asset_data.get_setting("default_fps", K_DEFAULT_FPS)
 	scale_spin.value = asset_data.get_setting("sprite_scale", 1)
 	
 	pixel_art.toggled.connect(
@@ -71,6 +76,9 @@ func setup():
 		func(value):
 			asset_data.set_setting("default_fps", value)
 			APM.apply_to_sprites_default_fps(value)
+			if asset_data.settings_data.has(get_current_sprite_animation_key(K_FPS)) == false:
+				ignore_writin_in_settings_fps = true
+				fps_spin.value = value
 			)
 	
 	scale_spin.value_changed.connect(
@@ -90,10 +98,15 @@ func setup():
 		
 	# Выделить начальный спрайт и анимацию
 	sprites_list.select(0)
-	_on_sprites_lits_item_selected(0)
+	_on_sprites_list_item_selected(0)
 	animations_list.select(0)
 	_on_animations_list_item_selected(0)
-
+	
+	print(asset_data.settings_data)
+	
+##
+## Когда сменился Ассет, то вызывается эта функция
+##
 func _asset_changed(asset):
 	asset_name.text = asset_data.display_name;
 
@@ -105,12 +118,21 @@ func _asset_changed(asset):
 	pixel_art.button_pressed = asset_data.get_setting("pixel_art", false)
 	ui_lives_selector.text = asset_data.get_setting("ui_lives_method", "NUMBERS")
 	ui_coins_selector.text = asset_data.get_setting("ui_coins_method", "NUMBERS")
-	deafult_fps_spin.value = asset_data.get_setting("default_fps", 5)
+	deafult_fps_spin.value = asset_data.get_setting("default_fps", K_DEFAULT_FPS)
 	scale_spin.value = asset_data.get_setting("sprite_scale", 1)
 	
-	APM.ui_setting_changed.emit()
+	# Sprites and anims
+	# Выделить начальный спрайт и анимацию
+	sprites_list.select(0)
+	_on_sprites_list_item_selected(0)
+	animations_list.select(0)
+	_on_animations_list_item_selected(0)
 	
+	APM.ui_setting_changed.emit()
 
+##
+## Нажали на кнопку Сохранить
+##
 func _on_save_pressed():
 	var data_string = JSON.stringify(asset_data.settings_data, "\t") 
 	var file = FileAccess.open(asset_data.path.path_join(DirScaner.SETTINGS_FILE), FileAccess.WRITE)
@@ -120,6 +142,9 @@ func _on_save_pressed():
 	# Использовать новые настройки
 	# asset_data.settings_data.
 
+##
+## Нажали на кнопку Перезагрузить
+##
 func _on_reload_pressed():
 	var settings_path = asset_data.path.path_join(DirScaner.SETTINGS_FILE)
 	asset_data.settings_data = DirScaner.read_json_file(settings_path)
@@ -133,7 +158,7 @@ func _on_reload_pressed():
 		if "assetpack_name" in asset_data.settings_data:
 			asset_data.display_name = asset_data.settings_data.assetpack_name
 	
-	APM.apply_to_sprites_default_fps(asset_data.get_setting("default_fps", 5, false))
+	APM.apply_to_sprites_default_fps(asset_data.get_setting("default_fps", K_DEFAULT_FPS, false))
 	APM.apply_to_all()
 	APM.ui_setting_changed.emit()
 	_asset_changed(APM.current)
@@ -146,23 +171,16 @@ func _on_edit_asset_pack_pressed():
 	add_new_asset_pack.disabled = visible
 
 func _on_delete_button_pressed():
-	asset_data.settings_data.erase(get_current_sprite_animation_key(K_FPS))
-	fps_spin.value = asset_data.get_setting("default_fps", 5)
-	ignore_change_fps = true
+	if asset_data.settings_data.has(get_current_sprite_animation_key(K_FPS)):
+		asset_data.settings_data.erase(get_current_sprite_animation_key(K_FPS))
+	ignore_writin_in_settings_fps = true
+	fps_spin.value = asset_data.get_setting("default_fps", K_DEFAULT_FPS)
 	delete_button.disabled = true
 
-func sprite_animation_selected():
-	# Заполнить данные
-	fps_spin.value = asset_data.get_setting("default_fps", 5);
-	var key = get_current_sprite_animation_key(K_FPS)
-	if key in asset_data.settings_data:
-		fps_spin.value = asset_data.settings_data[key]
-		delete_button.disabled = false
-	else:
-		delete_button.disabled = true
-	ignore_change_fps = true
-
-func _on_sprites_lits_item_selected(index):
+##
+## Когда выбирается спрайт, то создать список анимаций и выбрать 1-ую
+##
+func _on_sprites_list_item_selected(index):
 	sprite_selected_name = sprites_list.get_item_text(index)
 	var sprite_selected = APM.sprite_def[sprite_selected_name]
 	animations_list.clear();
@@ -174,43 +192,36 @@ func _on_sprites_lits_item_selected(index):
 	animations_list.select(0)
 	_on_animations_list_item_selected(0)
 
+##
+## Когда выбирается анимация, то настроить элементы отображения FPS в соответствии
+##
 func _on_animations_list_item_selected(index):
 	animation_selected_name = animations_list.get_item_text(index)
 
 	# Заполнить данные
-	sprite_animation_selected()
-	
-	## sprite_animation_selected = 
-	#var def = APM.sprite_def[sprite_name]
-	#if "animations" in def:
-		#for anim in def.animations:
-			#animations_list.add_item(anim)
-	#else:
-		#animations_list.add_item("idle")
+	if asset_data.settings_data.has(get_current_sprite_animation_key(K_FPS)):
+		fps_spin.value = asset_data.get_setting(get_current_sprite_animation_key(K_FPS), K_DEFAULT_FPS, false)
+		delete_button.disabled = false
+	else:
+		# Default FPS
+		# Флаг, чтобы не записывать дефолтное значение в настройки
+		ignore_writin_in_settings_fps = true
+		fps_spin.value = asset_data.get_setting("default_fps", K_DEFAULT_FPS)
+		delete_button.disabled = true
 
-func get_current_sprite_animation_key(add = ""):
-	return "%s_%s_%s_%s" % [K_SPRITES, sprite_selected_name, animation_selected_name, add]
+
 
 func _on_fps_spin_value_changed(value):
-	#var _config = get_sprite_data_for_changes(sprite_selected_name)
-	#if (animation_selected_name in _config) == false:
-		#_config[animation_selected_name] = {}
-	#_config[animation_selected_name][K_FPS] = value
-	if ignore_change_fps == false:
+	# Не всегда надо записывать сеттинг, например, когда ставится deafult fps
+	if ignore_writin_in_settings_fps == false:
 		asset_data.set_setting(get_current_sprite_animation_key(K_FPS), value)
-		APM.get_sprite(sprite_selected_name).set_animation_speed(animation_selected_name, value)
+	ignore_writin_in_settings_fps = false
 	
-	ignore_change_fps = false
-	delete_button.disabled = false
-	# Apply FPS to Anim
+	APM.get_sprite(sprite_selected_name).set_animation_speed(animation_selected_name, value)
 	
-func get_sprite_data_for_changes(sprite_name):
-	if (K_SPRITES in asset_data.settings_data) == false:
-		asset_data.settings_data[K_SPRITES] = {}
-	var _sprites = asset_data.settings_data[K_SPRITES]
-	if (sprite_name in _sprites) == false:
-		_sprites[sprite_name] = {}
-	var _config = _sprites[sprite_name]
-	return _config
+	if asset_data.settings_data.has(get_current_sprite_animation_key(K_FPS)):
+		delete_button.disabled = false
 
+func _debug_print_setting_data():
+	OS.alert(str(asset_data.settings_data), "Asset Settings Data")
 

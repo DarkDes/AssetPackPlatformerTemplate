@@ -22,6 +22,7 @@ size = Vector2(64, 64)
 script = ExtResource("1_csie7")
 speed = 250
 jump_speed = -850
+friction = 0.75
 
 [node name="SpritePivot" type="Node2D" parent="."]
 position = Vector2(0, -48)
@@ -67,4 +68,5 @@ shape = SubResource("RectangleShape2D_tjlvn")
 debug_color = Color(0.910243, 0.000104733, 0.730668, 0.42)
 
 [node name="ActionController_WhyMisterAnderson?Why?" type="Node" parent="."]
+process_mode = 3
 script = ExtResource("8_41wr3")

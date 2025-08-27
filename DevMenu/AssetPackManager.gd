@@ -4,6 +4,8 @@ extends Node
 signal asset_changed
 signal ui_setting_changed
 
+const K_DEFAULT_FPS = 5
+
 var current : AssetPackData = null :
 	set(value):
 		current = value
@@ -72,11 +74,14 @@ func apply_to_all():
 		tileset.pixelated = _pixelart
 
 func apply_to_sprites_default_fps(fps):
+	var _debug_sprites = []
 	for sprite_name in sprites:
 		var sframes : SpriteFramesAsset = sprites[sprite_name]
 		for animation_name in sframes.get_animation_names():
 			if current.get_setting( "sprites_" + sprite_name + "_" + animation_name + "_fps", -1, false ) == -1:
 				sframes.set_animation_speed(animation_name, fps)
+				_debug_sprites.append(sprite_name + "_" + animation_name)
+	print( "Sprites " + str(_debug_sprites) + " set deafult fps " + str(fps) )
 
 ## 
 ## Найти, загрузить и применить спрайты
@@ -125,8 +130,8 @@ func apply_sprite_from_assetpack(sprite_name, sprite_data, assetpack_data):
 		# LOAD FRAMES TO SPRITE
 			print("Apply Asset: Found " + str(frames_count) + " of " + sprite_path)
 			
-			var fps = assetpack_data.get_setting("sprites_" + sprite_name + "_" + anim + "_fps", 
-				assetpack_data.get_setting("default_fps", 5))
+			var _default_fps = assetpack_data.get_setting("default_fps", K_DEFAULT_FPS, false)
+			var fps = assetpack_data.get_setting("sprites_" + sprite_name + "_" + anim + "_fps", _default_fps, false)
 			sframes.set_animation_speed(anim, fps)
 			
 			sframes.clear(anim);

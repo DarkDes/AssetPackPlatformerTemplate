@@ -23,6 +23,8 @@ var jumping := false
 var grounded_speed: float = 0
 var coyote_timer : Timer = null
 
+var input_disable : bool = false
+
 func _ready():
 	coyote_timer = Timer.new()
 	coyote_timer.wait_time = coyote_time
@@ -35,6 +37,11 @@ func _physics_process(delta):
 	var input_axis_move = Input.get_axis("move_left", "move_right") # controller.get_input_side()
 	var input_jump = Input.is_action_pressed("jump") # controller.get_input_jump()
 	var input_sprint = false
+	
+	if input_disable:
+		input_axis_move = 0.0
+		input_jump = false
+		input_sprint = false
 	
 	velocity.y += gravity * delta
 	

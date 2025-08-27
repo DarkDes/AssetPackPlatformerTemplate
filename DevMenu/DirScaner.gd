@@ -60,6 +60,7 @@ func scan_asset_directory():
 						data.author_name = data.settings_data.author
 					if "assetpack_name" in data.settings_data:
 						data.display_name = data.settings_data.assetpack_name
+				print("Loaded json settings data: " + str(data.settings_data))
 				
 				# Add to Asset Master
 				var _found = APM.assets_data.filter(func(e:AssetPackData): return e.path == data.path)

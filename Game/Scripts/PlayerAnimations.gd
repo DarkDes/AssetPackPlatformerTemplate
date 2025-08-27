@@ -3,12 +3,26 @@ extends Node
 @onready var character := get_parent()
 @export var sprite: AnimatedSprite2D = null
 
+@export var state : String = "movement"
+
 func _process(delta):
 	if sprite == null: return
 	if sprite.sprite_frames == null: return
 	
-	var movement = character.velocity
+	if state == "movement":
+		_animation_movement(character.velocity)
+
+func do_action_one(after_finished : Callable):
+	state = "action"
+	sprite.play("action")
+	#var sframes := animation_controller.sprite.sprite_frames as SpriteFrames
+	#if sframes.get_frame_count("action") > 1:
+	# await get_tree().create_timer(1.0).timeout
+	await sprite.animation_finished
+	state = "movement"
+	after_finished.call()
 	
+func _animation_movement(movement):
 	# Контроль анимации
 	if movement.x > 0:
 		sprite.set_flip_h(false)

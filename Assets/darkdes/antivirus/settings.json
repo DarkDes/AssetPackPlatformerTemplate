@@ -1,8 +1,10 @@
 {
 	"assetpack_name": "Anti-Virus Platformer",
-	"default_fps": 15,
+	"default_fps": 8,
 	"pixel_art": true,
 	"sprite_scale": 3,
+	"sprites_danger_idle_fps": 10,
+	"sprites_player_action_fps": 15,
 	"ui_coins_method": "NUMBERS",
 	"ui_lives_method": "COUNT"
 }
