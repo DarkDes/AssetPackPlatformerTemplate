@@ -79,11 +79,13 @@ func _on_change_method():
 func update_ui_elements(method, ui_elem_text, ui_elem_counts, ui_elem_label, sprite_element_name):
 	var assetpack_data = APM.current
 	var sprite_scale = assetpack_data.get_setting("sprite_scale", 1, false)
+	var text_scale = 3*APM.sprite_def[sprite_element_name].base_size.y / 16
+	
 	# var pixelated = assetpack_data.get_setting("pixel_art", true, false)
 	if method == "NUMBERS":
 		ui_elem_text.visible = true
 		ui_elem_counts.visible = false
-		ui_elem_label.scale = Vector2(sprite_scale, sprite_scale)
+		ui_elem_label.scale = Vector2(text_scale, text_scale)
 	else:
 		ui_elem_text.visible = false
 		ui_elem_counts.visible = true
