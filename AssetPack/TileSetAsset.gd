@@ -27,13 +27,17 @@ func update_image():
 	var _tile_source = get_source(_tile_source_id)
 	var _tile_atlas = _tile_source as TileSetAtlasSource
 	
-	if pixel_size == 3 and image.get_size() == Vector2i(80,80):
-		var _new_image = image.duplicate(false)
-		if pixelated:
-			_new_image.resize(80*3, 80*3, Image.INTERPOLATE_NEAREST)
-		else:
-			_new_image.resize(80*3, 80*3, Image.INTERPOLATE_BILINEAR)
-		_tile_atlas.texture = ImageTexture.create_from_image(_new_image)
-	else:
+	# За базу взят размер HD для тайлсета.
+	# Поэтому, нужно из любого размера изменить в HD (240x240)
+	var max_width := 80 * 3 # pixel_size
+	var max_height := 80 * 3 # pixel_size
+
+	if image.get_size() == Vector2i(max_width, max_height):
 		_tile_atlas.texture = ImageTexture.create_from_image(image)
+	else:
+		var _new_image := image.duplicate(false)
+		var interpolate := Image.INTERPOLATE_NEAREST if pixelated else Image.INTERPOLATE_BILINEAR
+		_new_image.resize(max_width, max_height, interpolate)
+		_tile_atlas.texture = ImageTexture.create_from_image(_new_image)
+	
 
