@@ -18,6 +18,10 @@ signal stats_changed
 			lives += 1
 		stats_changed.emit()
 
+@export var asset_cycling : bool = true
+
+var dev_menu : Control = null # Костыли мои костыли
+
 func level_finish():
 	print("Level Finshed, next")
 	level_finished.emit()

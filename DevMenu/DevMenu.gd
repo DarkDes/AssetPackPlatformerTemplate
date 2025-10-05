@@ -8,7 +8,7 @@ extends Control
 @onready var create_new_asset_pack_panel = $CreateNewAssetPackPanel
 
 @onready var skip_intro = $DevToolPanel/SkipIntro
-
+@onready var asset_cycling = $DevToolPanel/AssetCycling
 
 @onready var dir_scaner = $DirScaner
 
@@ -22,6 +22,8 @@ func _ready():
 	
 	rescan_and_build_selector()
 	select_first_asset_pack()
+	
+	GD.dev_menu = self
 
 func _gui_input(event):
 	print(event)
@@ -67,7 +69,8 @@ func _on_dev_tool_close_pressed():
 
 func _on_asset_pack_selector_item_selected(index):
 	var asset_data = asset_pack_selector.get_item_metadata(index)
-	APM.current = asset_data;
+	if APM.current != asset_data:
+		APM.current = asset_data
 
 
 func _on_add_new_asset_pack_pressed():

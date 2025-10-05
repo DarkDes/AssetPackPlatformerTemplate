@@ -14,6 +14,11 @@ func _ready():
 			starting_animation.disabled = _toggled
 	)
 	
+	dev_menu.asset_cycling.toggled.connect(
+		func(_toggled):
+			GD.asset_cycling = _toggled
+	)
+	
 	restart_button.pressed.connect(func(): GD.level_restart())
 	
 	# Take Screen shot

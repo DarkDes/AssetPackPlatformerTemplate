@@ -25,10 +25,12 @@ func _on_level_master_level_changed():
 
 func _on_level_master_levels_end():
 	# Если закончился список уровней,
-	# То тогда сменим ассет пак
-	var _index = APM.assets_data.find(APM.current)
-	_index = fmod(_index + 1, APM.assets_data.size())
-	APM.current = APM.assets_data[_index]
+	if GD.asset_cycling:
+		# То тогда сменим ассет пак
+		var _index = APM.assets_data.find(APM.current)
+		_index = fmod(_index + 1, APM.assets_data.size())
+		APM.current = APM.assets_data[_index]
+		GD.dev_menu.asset_pack_selector.select(_index) # костыль, чтобы работал из списка выбрался актуальный
 	
 	# И вернёмся к первому уровню
 	level_master.level_index = 0
