@@ -29,8 +29,8 @@ func update_image():
 	
 	# За базу взят размер HD для тайлсета.
 	# Поэтому, нужно из любого размера изменить в HD (240x240)
-	var max_width := 80 * 3 # pixel_size
-	var max_height := 80 * 3 # pixel_size
+	var max_width := 80 * 3
+	var max_height := 80 * 3
 
 	if image.get_size() == Vector2i(max_width, max_height):
 		_tile_atlas.texture = ImageTexture.create_from_image(image)

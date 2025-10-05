@@ -13,7 +13,8 @@ config_version=5
 config/name="AssetPackPlatformerTemplate"
 run/main_scene="res://world.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://icon_ris2_hd.png"
+config/windows_native_icon="res://appt.ico"
 
 [autoload]
 
