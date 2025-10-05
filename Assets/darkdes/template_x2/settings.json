@@ -1,0 +1,7 @@
+{
+	"default_fps": 5,
+	"pixel_art": true,
+	"sprite_scale": 2,
+	"ui_coins_method": "NUMBERS",
+	"ui_lives_method": "NUMBERS"
+}

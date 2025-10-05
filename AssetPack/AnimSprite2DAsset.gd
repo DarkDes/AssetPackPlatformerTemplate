@@ -30,4 +30,11 @@ func on_sprite_frames_textures_changed(sprite_frames_asset : SpriteFramesAsset):
 		texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	else:
 		texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
-	scale = Vector2(sprite_frames_asset.sprite_scale,sprite_frames_asset.sprite_scale)
+	
+	# Размерность спрайта. По вычислениям для 3 и 1 всё нормально.
+	# Но вот для 2 получается особое условие.
+	var scaling = sprite_frames_asset.sprite_scale
+	if sprite_frames_asset.sprite_scale == 2:
+		scaling = 96.0/64.0 # 1.5
+	scale = Vector2(scaling, scaling)
+	
