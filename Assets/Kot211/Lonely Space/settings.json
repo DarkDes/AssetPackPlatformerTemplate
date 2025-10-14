@@ -1,0 +1,12 @@
+{
+	"default_fps": 6,
+	"pixel_art": true,
+	"sprite_scale": 1,
+	"sprites_background_idle_fps": 4,
+	"sprites_background_parallax_idle_fps": 4,
+	"sprites_player_action_fps": 1,
+	"sprites_player_jump_fps": 5,
+	"sprites_player_move_fps": 5,
+	"ui_coins_method": "NUMBERS",
+	"ui_lives_method": "NUMBERS"
+}
